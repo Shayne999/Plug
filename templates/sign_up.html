@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Discription" content="This is Plug's Landing page">
+    <title>sign_up</title>
+</head>
+<body>
+    <div>
+        {% for message in messages %}
+            <h5>{{message}}</h5>
+        {% endfor %}
+    </div>
+    <form action="/home/" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" required>
+        </div>
+        <br>
+        <div>
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" required>
+        </div>
+        <br>        
+        <div>
+            <label for="email"> Email</label>
+            <input type="email" id="email" required name="email">
+        </div>
+        <br>
+        <div>
+            <label for="dob"> Date Of Birth</label>
+            <input type="date" id="email" required name="dob">
+        </div>
+        <br>
+        <div>
+            <label for="password" > Password</label>
+            <input type="password" id="password" required minlength="8" name="password">
+        </div>
+        <br>
+        <div>
+            <label for="password2" > Confirm Password</label>
+            <input type="password" id="password2" required minlength="8" name="password2">
+        </div>
+        <br>
+            <div>
+                <input type="reset" id="resetButton" class="btn btn-reset" value="Clear" aria-label="Reset Form">
+                <input type="submit" id="submitButton" class="btn btn-submit" name="signIn" value="Sign In" aria-label="Sign In">
+            </div>
+    </form>
+</body>
+</html>

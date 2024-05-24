@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Discription" content="This is Plug's Landing page">
+    <title>Plug</title>
+</head>
+<body>
+    <h1> Welcome To Plug</h1>
+    <div>
+    <p>Let us plug you with the right people.</p>
+    </div>
+    <form action="/home/" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="email"> Email</label>
+            <input type="email" id="email" required name="email">
+        </div>
+        <br>
+        <div>
+            <label for="password" > Password</label>
+            <input type="password" id="password" required minlength="8" name="password">
+        </div>
+        <br>
+        <div>
+            <input type="reset" id="resetButton" class="btn btn-reset" value="Clear" aria-label="Reset Form">
+            <input type="submit" id="submitButton" class="btn btn-submit" name="signIn" value="Sign In" aria-label="Sign In">
+        </div>
+    </form>
+    <br>
+    <div>
+        <a href="sign_up">
+            <button>Sign Up</button>
+        </a>
+    </div>
+</body>
+</html>
