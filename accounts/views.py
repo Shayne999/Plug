@@ -31,6 +31,7 @@ def sign_up(request):
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
+        
         if password == password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request, 'Username Taken')

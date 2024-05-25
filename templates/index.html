@@ -11,7 +11,12 @@
     <div>
     <p>Let us plug you with the right people.</p>
     </div>
-    <form action="/home/" method="post">
+    <div>
+        {% for message in messages %}
+            <h5>{{message}}</h5>
+        {% endfor %}
+    </div>
+    <form action="" method="POST">
         {% csrf_token %}
         <div>
             <label for="email"> Email</label>
