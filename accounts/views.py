@@ -67,7 +67,7 @@ def sign_up(request):
                 auth.login(request, user_login)
             
                 #profile object for new user
-                user_models = User.object.get(username=username)
+                user_models = User.objects.get(username=username)
                 new_profile = Profile.objects.create(user=user_models, id_user=user_models.id)
                 new_profile.save()
                 return redirect('sign_up')

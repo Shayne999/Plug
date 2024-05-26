@@ -12,6 +12,7 @@
     <h1>Home Page</h1><br>
     <div class="user items">
     <!-- user profile items-->
+        {% for users in users %}
         <div class="user profile image">
             <img src="{{users.profileimg.url}}" alt="">
         </div>
@@ -20,7 +21,7 @@
             <div class="user location">{{users.location}}</div>
             <div class="user bio">{{users.bio}}</div>
         </div>
-
+        {% endfor %}
     </div>
 </body>
 </html>
