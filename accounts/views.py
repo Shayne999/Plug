@@ -43,8 +43,8 @@ def index(request):
     
 def sign_up(request):
     if request.method == 'POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
+        # first_name = request.POST['first_name']
+        # last_name = request.POST['last_name']
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -58,7 +58,8 @@ def sign_up(request):
                 messages.info(request, 'Username Taken')
                 return redirect('sign_up')
             else:
-                user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+                #user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+                user = User.objects.create_user(username=username, password=password, email=email)
                 user.save()
 
                 #finish the profile
@@ -69,7 +70,7 @@ def sign_up(request):
                 user_models = User.objects.get(username=username)
                 new_profile = Profile.objects.create(user=user_models, id_user=user_models.id)
                 new_profile.save()
-                return redirect('sign_up')
+                return redirect('home')
 
         else:
             messages.info(request, 'Password Not Matching')
@@ -93,8 +94,26 @@ def home(request):
 
 @login_required(login_url='index')
 def settings(request):
-    
-    return render(request, 'settings.html')
+    user_profile = Profile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+            bio = request.POST['bio']
+            location = request.POST['location']
+            username = request.POST['username']
+
+            if 'profileimg' in request.FILES:
+                profileimg = request.FILES['profileimg']
+            else:
+                profileimg = user_profile.profileimg
+
+            user_profile.profileimg = profileimg
+            user_profile.bio = bio
+            user_profile.location = location
+            user_profile.username = username
+            user_profile.save()
+
+            return redirect('settings')
+    return render(request, 'settings.html', {'user_profile':user_profile})
 
 @login_required(login_url='index')
 def chat(request):

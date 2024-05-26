@@ -1,3 +1,5 @@
+{% load static %}
+{% static "images" as baseURL %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,5 +9,80 @@
 </head>
 <body>
     <h1>Profile Settings</h1>
+
+    <!-- Header -->
+    <header>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'settings' %}">Profile Setting</a></li>
+            <li><a href="{% url 'chat' %}">Messages</a></li>
+            <li><a href="{% url 'connections' %}">Connections</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </header>
+
+    <!-- User Information -->
+    <div >
+        <div>
+            <h3>General</h3>
+        </div>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div>
+                <label for="profileimg">Profile Image</label>
+                <img width="150" height="150" src="{{user_profile.profileimg.url}}">
+                <input type="file" id="profileimg" name="profileimg" value="{{user_profile.profileimg}}">
+            </div><br>
+            <div>
+                <label for="first_name">First Name</label>
+                <input type="text" id="fname" name="first_name" value="{{user_profile.first_name}}">
+            </div><br>
+
+            <div>
+                <label for="last_name">Last Name</label>
+                <input type="text" id="lname" name="last_name" value="{{user_profile.last_name}}">
+            </div><br> 
+
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{user_profile.username}}">
+            </div><br>
+
+            <div>
+                <label for="email">Last Name</label>
+                <input type="email" id="email" name="email" value="{{user_profile.email}}">
+            </div><br>
+
+            <div>
+                <label for="bio">About</label>
+                <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Tell us others about yourself" >{{user_profile.bio}}</textarea>
+            </div><br>
+
+            <div>
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" value="{{user_profile.location}}" required>
+            </div><br>
+
+            <div>
+                <label for="genre">Primary Genre</label>
+                <select name="genre" id="genre" required {{user_profile.genre}}>
+                    <option value="0">Rap</option>
+                    <option value="1">Rnb</option>
+                    <option value="2">Pop</option>
+                    <option value="0">House</option>
+                    <option value="1">EDM</option>
+                    <option value="2">Rock</option>
+                    <option value="0">Jazz</option>
+                    <option value="1">Indie</option>
+                    <option value="2">Other</option>
+                </select>
+            </div>
+            <div>
+            <input type="submit" value="Save">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

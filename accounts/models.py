@@ -14,6 +14,17 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     profileimg = models.ImageField(upload_to='profile_images', default='blank-profile-picture.png')
     location = models.CharField(max_length=30, blank=True)
+    genre = models.CharField(max_length=100, choices=[
+        ('rap', 'Rap'),
+        ('rnb', 'R&B'),
+        ('pop', 'Pop'),
+        ('house', 'House'),
+        ('edm', 'EDM'),
+        ('rock', 'Rock'),
+        ('jazz', 'Jazz'),
+        ('indie', 'Indie'),
+        ('other', 'Other'),
+    ], default='Not Specified')
 
     def __str__(self):
         return self.user.username
