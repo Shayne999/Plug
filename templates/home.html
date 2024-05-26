@@ -1,3 +1,6 @@
+{% load static %}
+{% static "images" as baseURL %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Home Page</h1>
+    <h1>Home Page</h1><br>
+    <div class="user items">
+    <!-- user profile items-->
+        <div class="user profile image">
+            <img src="{{users.profileimg.url}}" alt="">
+        </div>
+        <div class ="user information">
+            <div class="user name">{{users.username}}</div>
+            <div class="user location">{{users.location}}</div>
+            <div class="user bio">{{users.bio}}</div>
+        </div>
+
+    </div>
 </body>
 </html>
