@@ -9,6 +9,16 @@
     <title>Document</title>
 </head>
 <body>
+
+    <header>
+        <ul>
+            <li><a href="{% url 'settings' %}">Account Setting</a></li>
+            <li><a href="{% url 'chat' %}">Messages</a></li>
+            <li><a href="{% url 'connections' %}">Connections</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </header>
+
     <h1>Home Page</h1><br>
     <div class="user items">
     <!-- user profile items-->

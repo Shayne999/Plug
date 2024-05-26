@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile
 
 # Create your views here.
-#@login_required(login_url='index')
 def index(request):
     
     if request.method == 'POST':
@@ -83,13 +82,24 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+@login_required(login_url='index')
 def profile(request):
     return render(request, 'profile.html')
 
+@login_required(login_url='index')
 def home(request):
     users = Profile.objects.all()
     return render(request, 'home.html', {'users':users})
 
-#@login_required
+@login_required(login_url='index')
 def settings(request):
+    
     return render(request, 'settings.html')
+
+@login_required(login_url='index')
+def chat(request):
+    return render(request, 'chat.html')
+
+@login_required(login_url='index')
+def connections(request):
+    return render(request, 'connections.html')
