@@ -7,5 +7,19 @@
 </head>
 <body>
     <h1>Feed Page</h1>
+
+    <!-- Upload box -->
+    <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small" class="header_dropdown">
+    
+        <div>
+            <form action="upload" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="image_or_video"><br>
+                <textarea name="caption" name="caption" cols="20" rows="5" placeholder="Your Caption"></textarea><br>
+                <input type="submit" value="Upload">
+
+            </form>
+        </div>
+    </div>
 </body>
 </html>
