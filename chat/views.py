@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='index')
+def chat(request):
+    return render(request, 'chat.html')
 
-def feed_view(request):
-    return render(request, 'feed.html')
