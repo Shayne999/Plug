@@ -1,3 +1,6 @@
+{% load static %}
+{% static "images" as baseURL %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +17,36 @@
         <div>
             <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="file" name="image" accept="image/*" value="Image"><br>  <!-- For image -->
+                <input type="file" name="image" accept="image/*" value="Image "><br>  <!-- For image -->
                 <input type="file" name="video" accept="video/*" value="Video"><br>  <!-- For video -->
                 <textarea name="caption" cols="20" rows="5" placeholder="Your Caption"></textarea><br>
                 <input type="submit" value="Upload">
             </form>
         </div>
     </div>
+    <br>
+
+    <!-- Feed items -->
+
+    {% for posts in posts %}
+
+    <div class="posts">
+
+        <div>
+            <h3>{{posts.user}}</h3>
+        </div>
+        <div>
+
+            <img src="{{posts.user.profileimg.url}}" alt="" width="50" height="50">
+            <a href="{{posts.image.url}}">
+                <img src="{{posts.image.url}}" alt="">
+            </a>
+            <p>{{posts.date}}</p>
+        </div>
+        <div>
+            <p>{{posts.caption}}</p>
+        </div>
+    </div>
+    {% endfor %}
 </body>
 </html>

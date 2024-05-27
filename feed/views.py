@@ -7,7 +7,10 @@ from .models import Post
 # Create your views here.
 
 def feed_view(request):
-    return render(request, 'feed.html')
+
+    posts = Post.objects.select_related('user__profile').all()
+
+    return render(request, 'feed.html', {'posts':posts})
 
 def upload(request):
     if request.method == 'POST':
