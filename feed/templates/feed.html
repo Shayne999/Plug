@@ -28,16 +28,19 @@
 
     <!-- Feed items -->
 
-    {% for posts in posts %}
+    {% for posts in posts reversed %}
 
     <div class="posts">
 
+        <a href ="#">
+            <div>
+                <h3>{{posts.user}}</h3>
+            </div>
+        </a>
         <div>
-            <h3>{{posts.user}}</h3>
-        </div>
-        <div>
-
-            <img src="{{posts.user.profile.profileimg.url}}" alt="" width="50" height="50">
+            <a href="#">
+                <img src="{{posts.user.profile.profileimg.url}}" alt="" width="50" height="50">
+            </a>
             <a href="{{posts.image.url}}">
                 <img src="{{posts.image.url}}" alt="">
             </a>

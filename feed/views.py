@@ -8,6 +8,7 @@ from .models import Post
 
 def feed_view(request):
 
+    #shows feed posts and profile image
     posts = Post.objects.select_related('user__profile').all()
 
     return render(request, 'feed.html', {'posts':posts})
