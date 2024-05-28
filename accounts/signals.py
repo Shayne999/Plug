@@ -6,7 +6,7 @@ from .models import Profile
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.create(user=instance, id_user=instance.id, username=instance.username, email=instance.email)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):

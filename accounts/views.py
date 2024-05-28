@@ -43,8 +43,6 @@ def index(request):
     
 def sign_up(request):
     if request.method == 'POST':
-        # first_name = request.POST['first_name']
-        # last_name = request.POST['last_name']
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -58,19 +56,19 @@ def sign_up(request):
                 messages.info(request, 'Username Taken')
                 return redirect('sign_up')
             else:
-                #user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                 user = User.objects.create_user(username=username, password=password, email=email)
                 user.save()
 
-                #finish the profile
-                user_login = auth.authenticate(email=email, password=password)
-                auth.login(request, user_login)
+                # Authenticate and login
+                user_login = auth.authenticate(username=username, password=password)
+                if user_login is not None:
+                    auth.login(request, user_login)
             
-                #profile object for new user
-                user_models = User.objects.get(username=username)
-                new_profile = Profile.objects.create(user=user_models, id_user=user_models.id)
-                new_profile.save()
-                return redirect('home')
+                    # No need to create profile here, signal handles it
+                    return redirect('home')
+                else:
+                    messages.info(request, 'Authentication Failed')
+                    return redirect('sign_up')
 
         else:
             messages.info(request, 'Password Not Matching')
