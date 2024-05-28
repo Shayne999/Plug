@@ -27,44 +27,46 @@
     <br>
 
     <!-- Feed posts -->
-
-    {% for posts in posts reversed %}
-
-    <div class="posts">
-
-        <a href ="#">
-            <div>
-                <h3>{{posts.user}}</h3>
-            </div>
-        </a>
+    <div>
+            <!-- feed/feed.html -->
+        {% for post in posts %}
+        <div>
+            <h3>{{ post.user }}</h3>
+        </div>
         <div>
             <!-- profile image -->
             <a href="#">
-                <img src="{{posts.user.profile.profileimg.url}}" alt="" width="50" height="50">
+                <img src="{{ post.user.profile.profileimg.url }}" alt="" width="50" height="50">
             </a>
 
             <!-- post image -->
-            <a href="{{posts.image.url}}">
-                <img src="{{posts.image.url}}" alt="">
+            <a href="{{ post.image.url }}">
+                <img src="{{ post.image.url }}" alt="">
             </a>
-            <p>{{posts.caption}}</p>
+            <p>{{ post.created_at }}</p>
         </div>
         <div>
-            <p>{{posts.created_at}}</p>
+            <p>{{ post.caption }}</p>
         </div>
 
-        <!-- Like button
-
+        <!-- Like button -->
         <div>
-            <a href="/feed/like-post?post_id={{ post.id }}" method="POST">
-                <div class="like">
-                    <button type="submit">Like</button>
-                </div>
-            </a>
-        </div> -->
+            <form action="{% url 'like_post' post.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">
+                    {% if request.user in post.likes.all %}
+                        Unlike
+                    {% else %}
+                        Like
+                    {% endif %}
+                </button>
+            </form>
+            <p>{{ post.likes.count }} Likes</p>
+        </div>
+        {% endfor %}
     </div>
+    
 
 
-    {% endfor %}
 </body>
 </html>

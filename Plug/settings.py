@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'feed',
     'chat',
+    'profilepage',
 ]
 
 MIDDLEWARE = [
