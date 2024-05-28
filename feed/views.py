@@ -4,6 +4,7 @@ from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Post, LikePost
+
 import uuid
 
 # Create your views here.
@@ -36,7 +37,7 @@ def upload(request):
     
     return render(request, 'feed.html')
 
-#@login_required(login_url='index')
+@login_required(login_url='index')
 def like_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.user in post.likes.all():

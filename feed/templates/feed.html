@@ -10,6 +10,7 @@
 </head>
 <body>
     <h1>Feed Page</h1>
+    <li><a href="{% url 'profilepage' request.user.username %}">Profile</a></li>
 
     <!-- Upload box -->
     <div class="upload">
@@ -29,19 +30,23 @@
     <!-- Feed posts -->
     <div>
             <!-- feed/feed.html -->
-        {% for post in posts %}
+        {% for post in posts reversed %}
         <div>
-            <h3>{{ post.user }}</h3>
+            <!-- username -->
+            <h3><a href="{% url 'profilepage' post.user.username %}">{{ post.user }}</a></h3>
+        </div>
+                 <!-- <h3>{{ post.user }}</h3> -->
+            
         </div>
         <div>
             <!-- profile image -->
-            <a href="#">
+            <a href="{% url 'profilepage' post.user.username %}">
                 <img src="{{ post.user.profile.profileimg.url }}" alt="" width="50" height="50">
             </a>
 
             <!-- post image -->
             <a href="{{ post.image.url }}">
-                <img src="{{ post.image.url }}" alt="">
+                <img src="{{ post.image.url }}" alt="" width="200" height="200">
             </a>
             <p>{{ post.created_at }}</p>
         </div>

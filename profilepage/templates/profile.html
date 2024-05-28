@@ -1,0 +1,30 @@
+{% load static %}<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ user_object.username }}'s Profile</title>
+</head>
+<body>
+    <h1>{{ user_object.username }}</h1>
+    <img src="{{ user_profile.profileimg.url }}" alt="Profile Image" width="100" height="100">
+    <p>{{ user_profile.bio }}</p>
+    <p>Location: {{ user_profile.location }}</p>
+    <p>Genre: {{ user_profile.genre }}</p>
+    <p>Total Posts: {{ user_posts_length }}</p>
+
+    <h2>Posts:</h2>
+    {% for post in user_posts %}
+        <div>
+            <p>{{ post.caption }}</p>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post Image" width="200">
+            {% endif %}
+            {% if post.video %}
+                <video width="320" height="240" controls>
+                    <source src="{{ post.video.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>
