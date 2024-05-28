@@ -29,13 +29,12 @@ def upload(request):
             return redirect('feed')
 
         new_post = Post.objects.create(user=user, image=image, video=video, caption=caption)
-        new_post.save()
+        #new_post.save()
+        return redirect('feed')
     else:
         messages.info(request, 'Upload Failed')
         return redirect('feed')
-
-    
-    return render(request, 'feed.html')
+    #return render(request, 'feed.html')
 
 @login_required(login_url='index')
 def like_post(request, post_id):
