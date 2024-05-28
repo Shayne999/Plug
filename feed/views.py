@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Post, LikePost
+from .models import Post, LikePost, Favorite
 
 import uuid
 
@@ -44,3 +44,33 @@ def like_post(request, post_id):
     else:
         post.likes.add(request.user)
     return redirect('feed')
+
+
+@login_required(login_url='index')
+def favorite_posts(request):
+    user_favorites = Favorite.objects.filter(user=request.user)
+    return render(request, 'favorite_posts.html', {'favorites': user_favorites})
+
+def add_to_favorites(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    profile = request.user.profile
+    profile.favorites.add(post)
+    return redirect('feed')
+    
+@login_required
+def favorites_view(request):
+    profile = request.user.profile
+    favorites = profile.favorites.all()
+    return render(request, 'favorites.html', {'favorites': favorites})
+
+
+@login_required
+def remove_from_favorites(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    profile = request.user.profile
+    profile.favorites.remove(post)
+    return redirect('feed')
+
+
+
+

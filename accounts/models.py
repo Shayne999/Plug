@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.conf import settings
+from feed.models import Post
 
 
 User = get_user_model()
@@ -14,6 +15,7 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     profileimg = models.ImageField(upload_to='profile_images', default='blank-profile-picture.png')
     location = models.CharField(max_length=30, blank=True)
+    favorites = models.ManyToManyField(Post, related_name='favorited_by', blank=True)
     genre = models.CharField(max_length=100, choices=[
         ('rap', 'Rap'),
         ('rnb', 'R&B'),

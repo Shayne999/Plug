@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.db.models import UUIDField
 import uuid
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -25,3 +26,10 @@ class LikePost(models.Model):
 
     def __str__(self):
         return self.username
+    
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('user', 'post')
