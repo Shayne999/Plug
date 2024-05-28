@@ -13,7 +13,14 @@ class Post(models.Model):
     image = models.ImageField(upload_to='post_images')
     video = models.FileField(upload_to='post_videos', null=True)
     caption = models.TextField()
-    likes_count = models.IntegerField(default=0)
+    like_count = models.IntegerField(default=0) 
     created_at = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return f"{self.user.username}'s Post"
+    
+class LikePost(models.Model):
+    post_id = models.CharField(max_length=400)
+    username = models.CharField(max_length=400)
+
+    def __str__(self):
+        return self.username

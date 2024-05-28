@@ -26,7 +26,7 @@
     </div>
     <br>
 
-    <!-- Feed items -->
+    <!-- Feed posts -->
 
     {% for posts in posts reversed %}
 
@@ -38,18 +38,33 @@
             </div>
         </a>
         <div>
+            <!-- profile image -->
             <a href="#">
                 <img src="{{posts.user.profile.profileimg.url}}" alt="" width="50" height="50">
             </a>
+
+            <!-- post image -->
             <a href="{{posts.image.url}}">
                 <img src="{{posts.image.url}}" alt="">
             </a>
-            <p>{{posts.date}}</p>
-        </div>
-        <div>
             <p>{{posts.caption}}</p>
         </div>
+        <div>
+            <p>{{posts.created_at}}</p>
+        </div>
+
+        <!-- Like button
+
+        <div>
+            <a href="/feed/like-post?post_id={{ post.id }}" method="POST">
+                <div class="like">
+                    <button type="submit">Like</button>
+                </div>
+            </a>
+        </div> -->
     </div>
+
+
     {% endfor %}
 </body>
 </html>
