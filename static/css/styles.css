@@ -1,0 +1,94 @@
+/* ============================================== 
+
+ SIGNIN & SIGNUP PAGES                         */
+body {
+    background-color: hsl(0, 0%, 15%); 
+    color: white;
+}
+
+.form-text {
+    color: white;
+}
+
+
+
+
+
+/* ============================================== 
+
+ SIGNIN TEXT                                    */
+
+ .adjust{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signInText{
+    font-family: "raleway", sans-serif;
+    font-size: 15px; /* Adjust font size as needed */
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    color: white; /* Set text color to white */
+    text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
+    --glow-size: 20px; 
+    --glow-intensity: 700%; 
+}
+
+
+
+.signup-link {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    font-size: 10px;
+    font-size: 0.8rem; /* Adjust font size as needed */
+    color: #006aff; /* Bootstrap primary color */
+    text-decoration: none;
+}
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+/* ==============================================
+
+PLUG NAME LINK                                  */
+
+.pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-size: 100px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    margin-top: 100px;
+    color: #007bff; /* Blue color */
+    text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
+    --glow-size: 70px; 
+    --glow-intensity: 30%; 
+  }
+  
+
+
+
+
+  
+  /* ==============================================
+
+PLUG NAME Signup                                  */
+.pacifico-regular-signUpPage {
+    font-family: "Pacifico", cursive;
+    font-size: 80px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    margin-top: 70px;
+    color: #007bff; /* Blue color */
+    text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
+    --glow-size: 70px; 
+    --glow-intensity: 30%; 
+  }
