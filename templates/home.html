@@ -1,41 +1,21 @@
-{% load static %}
-{% static "images" as baseURL %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-    <!-- Header Links -->
-    <header>
-        <ul>
-            <li><a href="{% url 'settings' %}">Profile Setting</a></li>
-            <li><a href="{% url 'chat' %}">Messages</a></li>
-            <li><a href="{% url 'connections' %}">Connections</a></li>
-            <li><a href="{% url 'feed' %}">Feed</a> </li>
-            <li><a href="{% url 'chat' %}">Chat</a></li>
-            <li><a href="{% url 'profilepage' request.user.username %}">Profile</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-        </ul>
-    </header>
+{% extends 'base.html' %}
+{% block content %}
 
     <h1>Home Page</h1><br>
     <div class="user items">
     <!-- user profile items-->
-        {% for users in users %}
+        {% for users in users reversed %}
         <div class="user profile image">
-            <img src="{{users.profileimg.url}}" alt="">
+            <img src="{{users.profileimg.url}}" alt="" width="250" height="250">
         </div>
         <div class ="user information">
             <div class="user name">{{users.username}}</div>
             <div class="user location">{{users.location}}</div>
             <div class="user bio">{{users.bio}}</div>
-        </div>
+        </div><br><br>
         {% endfor %}
     </div>
-</body>
-</html>
+    
+
+{% endblock %}

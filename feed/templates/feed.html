@@ -1,17 +1,9 @@
-{% load static %}
-{% static "images" as baseURL %}
+{% extends 'base.html' %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
     <h1>Feed Page</h1>
-    <li><a href="{% url 'profilepage' request.user.username %}">Profile</a></li>
-    <li><a href="{% url 'favorites' %}">Favorite Posts</a></li>
+    <!-- <li><a href="{% url 'profilepage' request.user.username %}">Profile</a></li> -->
+    <li><a href="{% url 'favorites' %}">Favorite Posts</a></li><br>
 
     <!-- Upload box -->
     <div class="upload">
@@ -95,6 +87,4 @@
     </div>
     
 
-
-</body>
-</html>
+{% endblock %}

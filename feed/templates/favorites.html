@@ -1,10 +1,7 @@
 <!-- feed/templates/favorites.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Favorites</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+
     <h1>Your Favorite Posts</h1>
     {% if favorites %}
         <ul>
@@ -22,6 +19,7 @@
                     {% endif %}
                     <form action="{% url 'remove_from_favorites' post.id %}" method="post">
                         {% csrf_token %}
+                        <br>
                         <button type="submit">Remove from Favorites</button>
                     </form>
                 </li>
@@ -31,7 +29,7 @@
         <p>You have no favorite posts.</p>
     {% endif %}
     <a href="{% url 'feed' %}">Back to Feed</a>
-</body>
-</html>
+
+{% endblock %}
 
 
