@@ -4,12 +4,15 @@
 body {
     background-color: hsl(0, 0%, 15%); 
     color: white;
+    margin-bottom: 50px;
+    margin-left: 30px;
+    margin-right:30px;
+    margin-top: 50px;
 }
 
 .form-text {
     color: white;
 }
-
 
 
 
@@ -92,3 +95,35 @@ PLUG NAME Signup                                  */
     --glow-size: 70px; 
     --glow-intensity: 30%; 
   }
+
+
+                /*PAGE NAME*/
+
+.pacifico-regular-allPage {
+    font-family: "Pacifico", cursive;
+    font-size: 30px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    letter-spacing: 0.5em;
+    margin-top: 10px;
+    color: #007bff; /* Blue color */
+    text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
+    --glow-size: 70px; 
+    --glow-intensity: 30%; 
+  }
+
+
+
+/* ==============================================
+
+HOME PAGE CARDS
+                                */
+.cardColor {
+    background-color: #000000; /* Set your desired background color */
+    border: 1px solid #007bff; /* Add border for better contrast */
+}
+
+.cardText{
+    color: white;
+}

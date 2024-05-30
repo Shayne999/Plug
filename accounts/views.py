@@ -90,6 +90,8 @@ def home(request):
     users = Profile.objects.all()
     return render(request, 'home.html', {'users':users})
 
+
+
 @login_required(login_url='index')
 def settings(request):
     user_profile = Profile.objects.get(user=request.user)

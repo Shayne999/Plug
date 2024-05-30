@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>Feed Page</h1>
+    <h1 class="pacifico-regular-allPage">Feed Page</h1>
     <!-- <li><a href="{% url 'profilepage' request.user.username %}">Profile</a></li> -->
     <li><a href="{% url 'favorites' %}">Favorite Posts</a></li><br>
 
@@ -21,37 +21,48 @@
     <br>
 
     <!-- Feed posts -->
-    <div>
-            <!-- feed/feed.html -->
-        {% for post in posts reversed %}
-        <div>
-            <!-- username -->
-            <h3><a href="{% url 'profilepage' post.user.username %}">{{ post.user }}</a></h3>
-        </div>
-                 <!-- <h3>{{ post.user }}</h3> -->
-            
-        </div>
-        <div>
-            <!-- profile image -->
+<div class="container">
+    {% for post in posts reversed %}
+
+    <div class="card mb-3">
+
+                                        <!-- Card Header -->
+
+        <div class="card-header">
+
+            <!-- Username -->
+            <h5 class="card-title"><a href="{% url 'profilepage' post.user.username %}">{{ post.user }}</a></h5>
+
+            <!-- Profile image -->
             <a href="{% url 'profilepage' post.user.username %}">
-                <img src="{{ post.user.profile.profileimg.url }}" alt="" width="50" height="50">
+                <img src="{{ post.user.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle" width="30" height="30">
             </a>
+        </div>
 
-            <!-- post image -->
+
+                                        <!-- Card Body -->
+        <div class="card-body">
+
+            <!-- Post image -->
             <a href="{{ post.image.url }}">
-                <img src="{{ post.image.url }}" alt="" width="200" height="200">
+                <img src="{{ post.image.url }}" alt="Post Image" class="img-fluid" width="200" height="200">
             </a>
-            <p>{{ post.created_at }}</p>
-        </div>
-        <div>
-            <p>{{ post.caption }}</p>
+
+            <!-- Created at -->
+            <p class="card-text">{{ post.created_at }}</p>
+            <!-- Caption -->
+
+            <p class="card-text">{{ post.caption }}</p>
         </div>
 
-        <!-- Like button -->
-        <div>
-            <form action="{% url 'like_post' post.id %}" method="POST" style="display: inline;">
+
+                                        <!-- Card Footer -->
+        <div class="card-footer">
+
+            <!-- Like Button -->
+            <form action="{% url 'like_post' post.id %}" method="POST" class="d-inline">
                 {% csrf_token %}
-                <button type="submit">
+                <button type="submit" class="btn btn-primary">
                     {% if request.user in post.likes.all %}
                         Unlike
                     {% else %}
@@ -59,32 +70,36 @@
                     {% endif %}
                 </button>
             </form>
-                <a href="{{ post.image.url }}" download style="display: inline-block; margin-left: 10px;">
-                    <button>Download</button>
-                </a>
 
-                        <!-- Post Favorite -->
+            <!-- Download Button -->
+            <a href="{{ post.image.url }}" download class="btn btn-secondary ms-2">Download</a>
+
+            <!-- Post Favorite -->
             {% if request.user.is_authenticated %}
                 {% if post not in request.user.profile.favorites.all %}
-                    <form action="{% url 'add_to_favorites' post.id %}" method="post">
+                    <form action="{% url 'add_to_favorites' post.id %}" method="post" class="d-inline">
                         {% csrf_token %}
-                        <button type="submit">Add to Favorites</button>
+                        <button type="submit" class="btn btn-warning ms-2">Add to Favorites</button>
                     </form>
                 {% else %}
-                    <form action="{% url 'remove_from_favorites' post.id %}" method="post">
+                    <form action="{% url 'remove_from_favorites' post.id %}" method="post" class="d-inline">
                         {% csrf_token %}
-                        <button type="submit">Remove from Favorites</button>
+                        <button type="submit" class="btn btn-danger ms-2">Remove from Favorites</button>
                     </form>
                 {% endif %}
             {% endif %}
-
-
-
-                <!-- likes count -->
-            <p>{{ post.likes.count }} Likes</p>
+            <!-- Likes count -->
+            <span class="ms-auto">{{ post.likes.count }} 
+                {% if post.likes.count == 1 %}
+                    Like
+                {% else %}
+                    Likes
+                {% endif %}
+            </span>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
     
 
 {% endblock %}

@@ -2,20 +2,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>Home Page</h1><br>
-    <div class="user items">
-    <!-- user profile items-->
-        {% for users in users reversed %}
-        <div class="user profile image">
-            <img src="{{users.profileimg.url}}" alt="" width="250" height="250">
-        </div>
-        <div class ="user information">
-            <div class="user name">{{users.username}}</div>
-            <div class="user location">{{users.location}}</div>
-            <div class="user bio">{{users.bio}}</div>
-        </div><br><br>
-        {% endfor %}
-    </div>
+    <h1 class="pacifico-regular-allPage">C o n n e c t</h1><br>
+    
+       <!--- user profile items-->
+            {% for users in users reversed %}
+             <div class="card mb-3 cardColor cardText" style="width: 540px; height: 250px;">
+                <div class="row g-0 h-100">
+                    <div class="col-md-4 h-100">
+                        <img src="{{ users.profileimg.url }}" class="img-fluid rounded-start h-100" alt="User Image" style="object-fit: cover;">
+                    </div>
+                    <div class="col-md-8 h-100 d-flex flex-column justify-content-center">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ users.username }}</h5>
+                            <p class="card-text"><small>{{ users.location }}</small></p>
+                            <p class="card-text">{{ users.bio }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
     
 
 {% endblock %}
