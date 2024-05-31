@@ -186,18 +186,19 @@ NAV TABS                                       */
 
 FAVORITE POST ICONS                            */
 
-.icon-link {
-    text-decoration: none;
-    color: inherit;
+.btn-group-vertical .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:  #007bff
 }
-.icon-link svg {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
+.btn-group-vertical .btn svg {
+    margin-right: 8px;
 }
-.icon-link span {
-    vertical-align: middle;
-    margin-left: 8px;
+
+.btn-group .btn-icon {
+    width: 100%;
+
 }
 
 
