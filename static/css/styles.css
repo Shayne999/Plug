@@ -29,11 +29,11 @@ body {
 
 .signInText{
     font-family: "raleway", sans-serif;
-    font-size: 15px; /* Adjust font size as needed */
+    font-size: 15px; 
     font-weight: 400;
     font-style: normal;
     text-align: center;
-    color: white; /* Set text color to white */
+    color: white; 
     text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
     --glow-size: 20px; 
     --glow-intensity: 700%; 
@@ -45,8 +45,8 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: italic;
     font-size: 10px;
-    font-size: 0.8rem; /* Adjust font size as needed */
-    color: #006aff; /* Bootstrap primary color */
+    font-size: 0.8rem; 
+    color: #006aff; 
     text-decoration: none;
 }
 .signup-link:hover {
@@ -69,7 +69,7 @@ PLUG NAME LINK                                  */
     font-style: normal;
     text-align: center;
     margin-top: 100px;
-    color: #007bff; /* Blue color */
+    color: #007bff;
     text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
     --glow-size: 70px; 
     --glow-intensity: 30%; 
@@ -90,7 +90,7 @@ PLUG NAME Signup                                  */
     font-style: normal;
     text-align: center;
     margin-top: 70px;
-    color: #007bff; /* Blue color */
+    color: #007bff;
     text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
     --glow-size: 70px; 
     --glow-intensity: 30%; 
@@ -101,12 +101,13 @@ PLUG NAME Signup                                  */
 
 .pacifico-regular-allPage {
     font-family: "Pacifico", cursive;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 400;
     font-style: normal;
     text-align: center;
     letter-spacing: 0.5em;
-    margin-top: 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     color: #007bff; /* Blue color */
     text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
     --glow-size: 70px; 
@@ -115,13 +116,15 @@ PLUG NAME Signup                                  */
 
 
 
+
+
 /* ==============================================
 
 HOME PAGE CARDS                                 */
 
 .cardColor {
-    background-color: #000000; /* Set your desired background color */
-    border: 1px solid #007bff; /* Add border for better contrast */
+    background-color: #000000;
+    border: 1px solid #007bff;
 }
 
 .cardText{
@@ -136,21 +139,67 @@ HOME PAGE CARDS                                 */
 
 NAV TABS                                       */
 
-/* Change the background color of the navbar */
-/* Change the background color of the navbar */
+
 .navbar {
     background-color: #007bff !important;
 }
 
-/* Change the color of the bottom border of the navbar */
+
 .navbar {
     border-color: #007bff !important;
 }
 
-/* Change the color of the horizontal line under the navbar */
+
 .navbar-dark .navbar-nav .nav-link {
     border-bottom: 2px solid #007bff !important;
 }
+
+
+
+
+
+
+
+/* ==============================================
+
+NAV TABS                                       */
+
+
+.dropdown-menu {
+    min-width: 300px;
+}
+
+.dropdown-menu .form-label {
+    font-weight: bold;
+}
+
+.dropdown-menu textarea {
+    resize: none;
+}
+
+
+
+
+
+
+/* ==============================================
+
+FAVORITE POST ICONS                            */
+
+.icon-link {
+    text-decoration: none;
+    color: inherit;
+}
+.icon-link svg {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+.icon-link span {
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
 
 
 

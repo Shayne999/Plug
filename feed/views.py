@@ -57,14 +57,14 @@ def add_to_favorites(request, post_id):
     profile.favorites.add(post)
     return redirect('feed')
     
-@login_required
+@login_required(login_url='index')
 def favorites_view(request):
     profile = request.user.profile
     favorites = profile.favorites.all()
     return render(request, 'favorites.html', {'favorites': favorites})
 
 
-@login_required
+@login_required(login_url='index')
 def remove_from_favorites(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     profile = request.user.profile
@@ -72,5 +72,8 @@ def remove_from_favorites(request, post_id):
     return redirect('feed')
 
 
+@login_required(login_url='index')
+def upload_page(request):
+    return render(request, 'upload.html')
 
 

@@ -10,4 +10,5 @@ urlpatterns = [
     path('favorites/', views.favorites_view, name='favorites'),
     path('add_to_favorites/<uuid:post_id>/', views.add_to_favorites, name='add_to_favorites'),
     path('remove_from_favorites/<uuid:post_id>/', views.remove_from_favorites, name='remove_from_favorites'),
+    path('upload_page/', views.upload_page, name='upload_page'),
 ]
