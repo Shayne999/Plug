@@ -117,8 +117,8 @@ PLUG NAME Signup                                  */
 
 /* ==============================================
 
-HOME PAGE CARDS
-                                */
+HOME PAGE CARDS                                 */
+
 .cardColor {
     background-color: #000000; /* Set your desired background color */
     border: 1px solid #007bff; /* Add border for better contrast */
@@ -127,3 +127,30 @@ HOME PAGE CARDS
 .cardText{
     color: white;
 }
+
+
+
+
+
+/* ==============================================
+
+NAV TABS                                       */
+
+/* Change the background color of the navbar */
+/* Change the background color of the navbar */
+.navbar {
+    background-color: #007bff !important;
+}
+
+/* Change the color of the bottom border of the navbar */
+.navbar {
+    border-color: #007bff !important;
+}
+
+/* Change the color of the horizontal line under the navbar */
+.navbar-dark .navbar-nav .nav-link {
+    border-bottom: 2px solid #007bff !important;
+}
+
+
+
