@@ -151,12 +151,13 @@ HOME PAGE CARDS                                 */
 
 
 
+
 /* ==============================================
 
 NAV TABS                                       */
 
 
-.navbar {
+/* .navbar {
     background-color: #007bff !important;
 }
 
@@ -168,7 +169,7 @@ NAV TABS                                       */
 
 .navbar-dark .navbar-nav .nav-link {
     border-bottom: 2px solid #007bff !important;
-}
+} */
 
 
 
@@ -181,7 +182,7 @@ NAV TABS                                       */
 NAV TABS                                       */
 
 
-.dropdown-menu {
+/* .dropdown-menu {
     min-width: 300px;
 }
 
@@ -191,7 +192,7 @@ NAV TABS                                       */
 
 .dropdown-menu textarea {
     resize: none;
-}
+} */
 
 
 
@@ -220,3 +221,101 @@ FAVORITE POST ICONS                            */
 
 
 
+/* ==============================================
+
+Main Fonts                                      */
+
+.rajdhani-semibold {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .rajdhani-light {
+    font-family: "Rajdhani", sans-serif;
+    /* font-size: 5px; */
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  .postedAt{
+    font-size: 10px;
+  }
+
+  .rajdhani-regular {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+
+
+
+
+
+  /* ==============================================
+
+  FIXED BUTTONS                                  */
+
+  .fixed-buttons {
+    position: fixed;
+    top: 22%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 999;
+}
+
+
+
+
+
+/* ==============================================
+
+FIXED NAV BAR                                     */
+
+body {
+    padding-top: 56px; /* Adjust this value based on your navbar height */
+}
+.fixed-top {
+    margin-top: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Ensure it stays on top of other content */
+}
+
+.navbar-margin-bg {
+    position: absolute;
+    top: -10px; /* Move it up by the margin amount */
+    left: 0;
+    width: 100%;
+    height: 66px;
+    background-color: #343a40; 
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+
+/* ==============================================
+Profile Settings Card                          */
+
+.profile-card {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #343a40; /* Set the background color */
+    color: white; /* Set the text color to white for better contrast */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.profile-img {
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+}

@@ -4,118 +4,115 @@
     <h1 class="pacifico-regular-allPage">Feed</h1>
 
 
-    <div class="mt-5 text-center">
+        <div class="mt-5 text-center">
+            <div class="fixed-buttons">
 
-            <!-- Upload Button -->
-            <a href="{% url 'upload_page' %}" class="btn btn-primary btn-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
-                    <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
-                </svg>
-                
-            </a>
+                <!-- Upload Button -->
+                <a href="{% url 'upload_page' %}" class="btn btn-primary btn-icon" style="float: right; margin-right: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
+                        <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </a>
 
-            <!-- Favorite Button -->
-            <a href="{% url 'favorites' %}" class="btn btn-primary btn-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
-                </svg>
-                
-            </a>
-    </div><br>
-    
-
-
-    
-    
-    
-    
-
-
-
-
-
-    <!-- Feed posts -->
-<div class="container">
-    {% for post in posts reversed %}
-
-    <div class="card mb-3">
-
-                                        <!-- Card Header -->
-
-        <div class="card-header">
-
-            <!-- Username -->
-            <h5 class="card-title"><a href="{% url 'profilepage' post.user.username %}">{{ post.user }}</a></h5>
-
-            <!-- Profile image -->
-            <a href="{% url 'profilepage' post.user.username %}">
-                <img src="{{ post.user.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle" width="30" height="30">
-            </a>
+                <!-- Favorite Button -->
+                <a href="{% url 'favorites' %}" class="btn btn-primary btn-icon" style="float: right; margin-right: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+                    </svg>   
+                </a>
+            </div>
         </div>
+        <br>
 
 
-                                        <!-- Card Body -->
-        <div class="card-body">
-
-            <!-- Post image -->
-            <a href="{{ post.image.url }}">
-                <img src="{{ post.image.url }}" alt="Post Image" class="img-fluid" width="200" height="200">
-            </a>
-
-            <!-- Created at -->
-            <p class="card-text">{{ post.created_at }}</p>
-            <!-- Caption -->
-
-            <p class="card-text">{{ post.caption }}</p>
-        </div>
+    
+    
+    
+    
 
 
-                                        <!-- Card Footer -->
-        <div class="card-footer">
 
-            <!-- Like Button -->
-            <form action="{% url 'like_post' post.id %}" method="POST" class="d-inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary">
-                    {% if request.user in post.likes.all %}
-                        Unlike
-                    {% else %}
-                        Like
+    <!-- Posts Card-->
+
+    <div class="container">    
+        {% for post in posts reversed %}
+        <div class="row justify-content-center">
+            <div class="card mb-3" style="max-width: 35rem; background-color: #343a40; color: white;">
+                <div class="card-body">
+
+                    <!-- username and profile image-->
+
+                    <div class="d-flex align-items-center">
+                        <a href="{% url 'profilepage' post.user.username %}">
+                            <img src="{{ post.user.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle" width="30" height="30">
+                        </a>
+                        <h5 class="card-title ms-2 mb-0 rajdhani-semibold"><a href="{% url 'profilepage' post.user.username %}" style="text-decoration: none; color: black">{{ post.user }}</a></h5>
+                    </div>
+                    <hr style="margin-top: 10px; margin-bottom: 5px;">
+
+
+
+                    <!-- Post Image or Video-->
+
+                    {% if post.image %}
+                    <a href="{{ post.image.url }}">
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.caption }}">
+                    </a>
                     {% endif %}
-                </button>
-            </form>
+                    {% if post.video %}
+                    <a href="{{ post.video.url }}">
+                        <video controls class="card-img-top">
+                            <source src="{{ post.video.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </a>
+                    {% endif %}
 
-            <!-- Download Button -->
-            <a href="{{ post.image.url }}" download class="btn btn-secondary ms-2">Download</a>
+                    <!--Post Caption-->
 
-            <!-- Post Favorite -->
-            {% if request.user.is_authenticated %}
-                {% if post not in request.user.profile.favorites.all %}
+                    <hr style="margin-top: 10px; margin-bottom: 5px;">
+                    <p class="card-text rajdhani-regular">{{ post.caption }}</p>
+                </div>
+
+
+
+                <!-- Post Footer -->
+                <div class="card-footer">
+                    <p class="card-text rajdhani-light postedAt">{{ post.created_at }}</p>
+
+                    <form action="{% url 'like_post' post.id %}" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">
+                            {% if request.user in post.likes.all %}
+                            Unlike
+                            {% else %}
+                            Like
+                            {% endif %}
+                        </button>
+                    </form>
+                    <a href="{{ post.image.url }}" download class="btn btn-secondary ms-2">Download</a>
+                    {% if request.user.is_authenticated %}
+                    {% if post not in request.user.profile.favorites.all %}
                     <form action="{% url 'add_to_favorites' post.id %}" method="post" class="d-inline">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-warning ms-2">Add to Favorites</button>
                     </form>
-                {% else %}
+                    {% else %}
                     <form action="{% url 'remove_from_favorites' post.id %}" method="post" class="d-inline">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger ms-2">Remove from Favorites</button>
                     </form>
-                {% endif %}
-            {% endif %}
-
-
-            <!-- Likes count -->
-            <span class="ms-auto">{{ post.likes.count }} 
-                {% if post.likes.count == 1 %}
-                    Like
-                {% else %}
-                    Likes
-                {% endif %}
-            </span>
+                    {% endif %}
+                    {% endif %}
+                    <span class="ms-auto">{{ post.likes.count }} {% if post.likes.count == 1 %}Like{% else %}Likes{% endif %}</span>
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
+    
+    
+    
     
 
 {% endblock %}

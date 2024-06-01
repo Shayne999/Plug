@@ -2,58 +2,56 @@
 {% block content %}
 
     <!-- User Information -->
-    <div >
-        <div>
-            <h3>General</h3>
+    <div class="container">
+        <div class="card profile-card">
+            <div class="card-header">
+                <h3>General</h3>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group text-center">
+                        <label for="profileimg">Profile Image</label>
+                        <img class="profile-img" width="150" height="150" src="{{user_profile.profileimg.url}}">
+                        <input type="file" class="form-control-file mt-2" id="profileimg" name="profileimg" value="{{user_profile.profileimg}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" value="{{user_profile.username}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{user_profile.email}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">About</label>
+                        <textarea class="form-control" name="bio" id="bio" cols="30" rows="3" placeholder="Tell others about yourself">{{user_profile.bio}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" value="{{user_profile.location}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">Primary Genre</label>
+                        <select class="form-control" name="genre" id="genre" required {{user_profile.genre}}>
+                            <option value="0">Rap</option>
+                            <option value="1">Rnb</option>
+                            <option value="2">Pop</option>
+                            <option value="0">House</option>
+                            <option value="1">EDM</option>
+                            <option value="2">Rock</option>
+                            <option value="0">Jazz</option>
+                            <option value="1">Indie</option>
+                            <option value="2">Other</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-
-            <div>
-                <label for="profileimg">Profile Image</label>
-                <img width="150" height="150" src="{{user_profile.profileimg.url}}">
-                <input type="file" id="profileimg" name="profileimg" value="{{user_profile.profileimg}}">
-            </div><br>
-
-            <div>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="{{user_profile.username}}">
-            </div><br>
-
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{user_profile.email}}">
-            </div><br>
-
-            <div>
-                <label for="bio">About</label>
-                <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Tell us others about yourself" >{{user_profile.bio}}</textarea>
-            </div><br>
-
-            <div>
-                <label for="location">Location</label>
-                <input type="text" id="location" name="location" value="{{user_profile.location}}" required>
-            </div><br>
-
-            <div>
-                <label for="genre">Primary Genre</label>
-                <select name="genre" id="genre" required {{user_profile.genre}}>
-                    <option value="0">Rap</option>
-                    <option value="1">Rnb</option>
-                    <option value="2">Pop</option>
-                    <option value="0">House</option>
-                    <option value="1">EDM</option>
-                    <option value="2">Rock</option>
-                    <option value="0">Jazz</option>
-                    <option value="1">Indie</option>
-                    <option value="2">Other</option>
-                </select>
-            </div>
-            <div>
-            <input type="submit" value="Save">
-            </div>
-        </form>
     </div>
 
 {% endblock %}

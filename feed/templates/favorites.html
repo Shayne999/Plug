@@ -10,13 +10,17 @@
             <div class="col-md-3">
                 <div class="card h-100">
                     {% if post.image %}
+                    <a href="{{ post.image.url }}">
                         <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.caption }}">
+                    </a>
                     {% endif %}
                     {% if post.video %}
+                    <a href="{{ post.video.url }}">
                         <video controls class="card-img-top">
                             <source src="{{ post.video.url }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                    </a>
                     {% endif %}
                     <div class="card-body">
                         <p class="card-text">{{ post.caption }}</p>
