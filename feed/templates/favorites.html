@@ -3,32 +3,50 @@
 {% block content %}
 
     <h1 class="pacifico-regular-allPage">Your Favorite Posts</h1>
+
     {% if favorites %}
-        <ul>
-            {% for post in favorites %}
-                <li>
-                    <p>{{ post.caption }}</p>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for post in favorites %}
+            <div class="col-md-3">
+                <div class="card h-100">
                     {% if post.image %}
-                        <img src="{{ post.image.url }}" alt="{{ post.caption }}">
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.caption }}">
                     {% endif %}
                     {% if post.video %}
-                        <video controls>
+                        <video controls class="card-img-top">
                             <source src="{{ post.video.url }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     {% endif %}
-                    <form action="{% url 'remove_from_favorites' post.id %}" method="post">
-                        {% csrf_token %}
-                        <br>
-                        <button type="submit">Remove from Favorites</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
+                    <div class="card-body">
+                        <p class="card-text">{{ post.caption }}</p>
+                        <form action="{% url 'remove_from_favorites' post.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger mt-2">Remove from Favorites</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
     {% else %}
         <p>You have no favorite posts.</p>
     {% endif %}
-    <a href="{% url 'feed' %}">Back to Feed</a>
+
+    <br>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="{% url 'feed' %}" class="btn btn-primary">Back to Feed</a> 
+    
 
 {% endblock %}
 
