@@ -42,11 +42,42 @@
                                 </video>
                             {% endif %}
                         </div>
+                        <div class="card-footer">
+                            <p class="card-text rajdhani-light postedAt">{{ post.created_at }}</p>
+                            <form action="{% url 'like_post' post.id %}" method="POST" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">
+                                    {% if request.user in post.likes.all %}
+                                    Unlike
+                                    {% else %}
+                                    Like
+                                    {% endif %}
+                                </button>
+                            </form>
+                            {% if post.image %}
+                                <a href="{{ post.image.url }}" download class="btn btn-secondary ms-2">Download</a>
+                            {% endif %}
+                            {% if request.user.is_authenticated %}
+                                {% if post not in request.user.profile.favorites.all %}
+                                <form action="{% url 'add_to_favorites' post.id %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-warning ms-2">Add to Favorites</button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'remove_from_favorites' post.id %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger ms-2">Remove from Favorites</button>
+                                </form>
+                                {% endif %}
+                            {% endif %}
+                            <span class="ms-auto">{{ post.likes.count }} {% if post.likes.count == 1 %}Like{% else %}Likes{% endif %}</span>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
+    
     
 
 {% endblock %}
