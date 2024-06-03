@@ -21,15 +21,25 @@
     
     <h2 class="signInText">Sign In</h2>
 
-
-    {% for message in messages %}
-        <h5 d-flex justify-content-center >{{message}}</h5>
-    {% endfor %}
+    
 
     <div class="container form-container d-flex justify-content-center align-items-center">
         <div class="row g-3 align-items-center w-100 justify-content-center">
+
             <form action="" method="POST" class="col-12 col-md-6 col-lg-4">
                 {% csrf_token %}
+
+
+                <!-- Error Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger" style="padding: 5px 10px; margin-bottom: 2px; font-size: 10px;">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <!-- Username and Password -->
                 <div class="mb-3">
                     <div>
                         <label class="form-label signInText" for="username">Username</label>
