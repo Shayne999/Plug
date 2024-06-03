@@ -1,5 +1,9 @@
+{% load custom_tags %}
+
 {% load static %}
 {% static "images" as baseURL %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +47,9 @@
                     <li>
                         <a class="nav-link" href="{% url 'inbox' %}">Inbox</a>
                     </li>
+                    <div class="nav-item">
+                        {% show_notifications %}
+                    </div>
                     <li class="nav-item">
                         <a class="nav-link ml-auto" href="{% url 'logout' %}">Logout</a>
                     </li>

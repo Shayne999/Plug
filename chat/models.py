@@ -24,3 +24,10 @@ class MessageModel(models.Model):
     date = models.DateField(default=timezone.now)
     is_read = models.BooleanField(default=False)
     
+
+class Notification(models.Model):
+    to_user = models.ForeignKey(User, related_name='notification_to', on_delete=models.CASCADE, null=True)
+    from_user = models.ForeignKey(User, related_name='notification_from', on_delete=models.CASCADE, null=True)
+    thread = models.ForeignKey('ThreadModel', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
+    date = models.DateField(default=timezone.now)
+    user_has_seen = models.BooleanField(default=False)

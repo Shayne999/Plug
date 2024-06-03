@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.db.models import Q
-from .models import ThreadModel, MessageModel
+from .models import ThreadModel, MessageModel, Notification
 from .forms import ThreadForm, MessageForm
 
 # Create your views here.
@@ -79,12 +79,26 @@ class CreateMessage(View):
             receiver = thread.receiver
 
         message = MessageModel(
-            thread = thread,
-            sender_user = request.user,
-            receiver_user = receiver,
-            body = request.POST.get('message'),
-            
+            thread=thread,
+            sender_user=request.user,
+            receiver_user=receiver,
+            body=request.POST.get('message'),
         )
         message.save()
 
+        notification = Notification.objects.create(
+            from_user=request.user,
+            to_user=receiver,
+            thread=thread,
+        )
+
         return redirect('thread', pk=thread.pk)
+
+class ThreadNotification(View):
+    def get(self, request, notification_pk, object_pk, *args, **kwargs):
+        notification = Notification.objects.get(pk=notification_pk)
+        thread = ThreadModel.objects.get(pk=object_pk)
+
+        notification.user_has_seen = True
+        notification.save()
+        return redirect('thread', pk=object_pk)
