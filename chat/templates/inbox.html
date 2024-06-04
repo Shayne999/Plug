@@ -24,6 +24,9 @@
             <h5><a href="{% url 'thread' thread.pk %}" style="text-decoration: none; color: black;">{{ thread.receiver }}</a></h5>
             <!-- <h5>{{ thread.receiver }}</h5>
             <a class="streched-link" href="{% url 'thread' thread.pk %}"></a> -->
+            <div class="thread">
+                <a href="{% url 'delete-thread' thread.pk %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this thread?');">Delete</a>
+            </div>
         </div>
     </div>
     {% endfor %}

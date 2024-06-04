@@ -1,9 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Post, LikePost, Favorite
+from django.views.generic import DeleteView
+from django.urls import reverse_lazy
+from django.urls import reverse
 
 import uuid
 
@@ -77,3 +80,13 @@ def upload_page(request):
     return render(request, 'upload.html')
 
 
+class DeletePostView(DeleteView):
+    model = Post
+
+    def get_object(self, queryset=None):
+        uuid = self.kwargs.get('post_id')
+        return Post.objects.get(id=uuid)
+
+    def get_success_url(self):
+        username = self.request.user.username
+        return reverse_lazy('profilepage', kwargs={'username': username})

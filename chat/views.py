@@ -6,6 +6,8 @@ from django.views import View
 from django.db.models import Q
 from .models import ThreadModel, MessageModel, Notification
 from .forms import ThreadForm, MessageForm
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
 
 # Create your views here.
 @login_required(login_url='index')
@@ -113,3 +115,13 @@ class RemoveNotification(View):
         notification.save()
 
         return HttpResponse('Success', content_type="text/plain")
+    
+
+class DeleteThread(DeleteView):
+    model = ThreadModel
+    template_name = 'threadmodel_confirm_delete.html'
+    success_url = reverse_lazy('inbox')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)

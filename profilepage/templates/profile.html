@@ -71,6 +71,14 @@
                                 {% endif %}
                             {% endif %}
                             <span class="ms-auto">{{ post.likes.count }} {% if post.likes.count == 1 %}Like{% else %}Likes{% endif %}</span>
+
+                            <!-- Delete Post Button -->
+                            {% if request.user == post.user %}
+                                <form action="{% url 'delete_post' post.id %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger ms-2">Delete</button>
+                                </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
