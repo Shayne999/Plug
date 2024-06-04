@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -102,3 +102,13 @@ class ThreadNotification(View):
         notification.user_has_seen = True
         notification.save()
         return redirect('thread', pk=object_pk)
+
+
+class RemoveNotification(View):
+    def get(self, request, notification_pk, *args, **kwargs):
+        notification = Notification.objects.get(pk=notification_pk)
+
+        notification.user_has_seen = True   
+        notification.save()
+
+        return HttpResponse('Success', content_type="text/plain")
