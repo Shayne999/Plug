@@ -20,8 +20,10 @@
     {% for thread in threads %}
     <div class="row mb-3">
         <div class="card col-md-12 p-5 shadow-sm">
-            <h5>{{ thread.user }} - {{ thread.receiver }}</h5>
-            <a class="streched-link" href="{% url 'thread' thread.pk %}"></a>
+            <img src="{{ thread.receiver.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle" width="60" height="60">
+            <h5><a href="{% url 'thread' thread.pk %}" style="text-decoration: none; color: black;">{{ thread.receiver }}</a></h5>
+            <!-- <h5>{{ thread.receiver }}</h5>
+            <a class="streched-link" href="{% url 'thread' thread.pk %}"></a> -->
         </div>
     </div>
     {% endfor %}

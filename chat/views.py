@@ -52,6 +52,7 @@ class CreateThread(View):
                   return redirect('thread', pk=thread.pk)
               
           except:
+              messages.error(request, 'User Does Not Exist')
               return redirect('create-thread')
           
 
@@ -105,7 +106,7 @@ class ThreadNotification(View):
 
 
 class RemoveNotification(View):
-    def get(self, request, notification_pk, *args, **kwargs):
+    def delete(self, request, notification_pk, *args, **kwargs):
         notification = Notification.objects.get(pk=notification_pk)
 
         notification.user_has_seen = True   

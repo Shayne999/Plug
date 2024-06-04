@@ -284,11 +284,12 @@ Profile Settings Card                          */
 MESSAGING TEXT DISPLAY                          */
 
 .sent-message {
+
     background-color: #f3f3f350;
     color: black;
     border-radius: 30px;
     padding: 10px 20px;
-    width: 25%;
+    width: 40%;
 }
 
 .received-message {
@@ -296,8 +297,7 @@ MESSAGING TEXT DISPLAY                          */
     color: #fff;
     border-radius: 30px;
     padding: 10px 20px;
-    width: 25%;
-    float: right;
+    width: 40%;
 }
 
 
@@ -352,7 +352,11 @@ NOTIFICATIONS TEXT DISPLAY                      */
 }
 
 .dropdown-item-close:hover {
-    color: rgb(180, 25, 25);
+    color: rgb(25, 59, 180);
     transition: 0.3s;
     cursor: pointer;
 }
+
+
+
+

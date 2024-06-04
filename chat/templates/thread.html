@@ -4,58 +4,128 @@
 {% block content %}   
 
 
-<div calss="container">
-    <div class="row">
-        <div class="card col-md-12 mt-5 p-3 shadow-sm">
+<!-- <div calss="chat container" style="display: flex; flex-direction: column; height: 90vh;">
+        <div class="row justify-content-center">
+            <div class="card col-md-10 mt-10 p-3 shadow-sm d-flex align-items-center" style="background-color: #343a40;">
+                <a href="{{ thread.receiver.profile.profileimg.url }}">
+                    <img src="{{ thread.receiver.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle mr-3" width="60" height="60">
+                </a>
+                {% if thread.receiver == request.user %}
+                    <h5>{{ thread.user }}</h5>
+                {% else %}
+                    <a href="{% url 'profilepage' thread.receiver.username %}" style="text-decoration: none; color: white;">
+                        <h5>{{ thread.receiver }}</h5>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if message_list.all.count == 0 %}
+        <div class="row my-5 justify-content-center">
+            <div class="col-md-12">
+                <p>No Messages</p>
+            </div>
+        </div>
+        {% endif %}
+
+
+        {% for message in message_list %}
+        <div class="row justify-content-center">
+            <div class="col-md-10 my-1">
+                {% if message.sender_user == request.user %}
+                    <div class="sent-message my-1" style="float: right;  width: 45%; word-wrap: break-word;">
+                        <p>{{ message.body }}</p>
+                    </div>
+                {% elif message.receiver_user == request.user %}
+                    <div class="received-message my-1" style="float: left; width: 45%; word-wrap: break-word;">
+                        <p>{{ message.body }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+
+        text and send
+
+
+        <div class="row justify-content-center">
+            <div class="card col-md-10 p-3 shadow-sm" style="background-color: #343a40;">
+                <form method="POST" action="{% url 'create-message' thread.pk %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" type="submit" >Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</div> -->
+
+
+
+
+
+<div class="chat-container" style="display: flex; flex-direction: column; height: 90vh;">
+    <div class="chat-header" style="background-color: #343a40; color: white; padding: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <div class="card mt-10 p-3 shadow-sm d-flex align-items-center" style="background-color: #343a40; width: 100%;">
+            <a href="{{ thread.receiver.profile.profileimg.url }}">
+                <img src="{{ thread.receiver.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle mr-3" width="60" height="60">
+            </a>
             {% if thread.receiver == request.user %}
                 <h5>{{ thread.user }}</h5>
             {% else %}
-                <h5>{{ thread.receiver }}</h5>
+                <a href="{% url 'profilepage' thread.receiver.username %}" style="text-decoration: none; color: white;">
+                    <h5>{{ thread.receiver }}</h5>
+                </a>
             {% endif %}
         </div>
     </div>
 
-    {% if message_list.all.count == 0 %}
-    <div class="row my-5">
-        <div class="col-md-12">
-            <p>No Messages</p>
-        </div>
-    </div>
-    {% endif %}
+    <div class="chat-messages" style="overflow-y: auto; padding: 10px; background-color: #343a40; flex: 1;">
+        {% if message_list.all.count == 0 %}
+            <div class="no-messages" style="text-align: center;">
+                <p>No Messages</p>
+            </div>
+        {% endif %}
 
-
-    {% for message in message_list %}
-    <div class="row">
-        <div class="col-md-12 my-1">
-            {% if message.sender_user == request.user %}
-                <div class="sent-message my-3">
-                    <p>{{ message.body }}</p>
+        {% for message in message_list %}
+            <div class="message-row" style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+                <div class="message col-12 col-md-10 my-1" style="width: 100%;">
+                    {% if message.sender_user == request.user %}
+                        <div class="sent-message my-1" style="background-color: #f0f0f0; padding: 10px; border-radius: 10px; max-width: 60%; word-wrap: break-word; float: right;">
+                            <p>{{ message.body }}</p>
+                        </div>
+                    {% elif message.receiver_user == request.user %}
+                        <div class="received-message my-1" style="background-color: #4682b4; padding: 10px; border-radius: 10px; max-width: 60%; word-wrap: break-word; float: left;">
+                            <p>{{ message.body }}</p>
+                        </div>
+                    {% endif %}
                 </div>
-            {% elif message.receiver_user == request.user %}
-                <div class="received-message my-3">
-                    <p>{{ message.body }}</p>
-                </div>
-            {% endif %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 
-
-
-    <div class="row">
-        <div class="card col-md-12 p-3 shadow-sm">
+    <div class="chat-footer" style="background-color: #343a40; padding: 10px; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);">
+        <div class="card p-3 shadow-sm" style="background-color: #343a40; width: 100%;">
             <form method="POST" action="{% url 'create-message' thread.pk %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy }}
 
                 <div class="d-grid gap-2 mt-3">
-                    <button class="btn btn-success" type="submit" >Send Message</button>
+                    <button class="btn btn-primary" type="submit">Send</button>
                 </div>
             </form>
         </div>
     </div>
-
 </div>
+
+
+
+
+
 
 
 {% endblock %}  
