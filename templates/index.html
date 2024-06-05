@@ -212,12 +212,12 @@
                             <img src="{{ profile.profileimg.url }}" class="card-img-top" alt="User Image" style="object-fit: cover; height: 350px; object-position: 50% 5%;">
                         </a>
                         <div class="card-body">
-                            <a href="{% url 'profilepage' profile.user.username %}" style="text-decoration: none; color: white;">
-                                <h5 class="card-title rajdhani-semibold">{{ profile.user.username }}</h5>
+                            <a href="{% url 'profilepage' profile.user.username %}" style="text-decoration: none; color: white; ">
+                                <h5 class="card-title rajdhani-semibold" style="margin-bottom: 2px;">{{ profile.user.username }}</h5>
                             </a>
-                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;"><small>{{ profile.location }}</small></p>
-                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;"><small>{{ profile.genre }}</small></p>
-                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;">{{ profile.bio }}</p>
+                            <p class="card-text" style="font-family: 'Roboto', sans-serif; font-size: 14px; margin-bottom: 2px; color: white;"><small>{{ profile.location }}</small></p>
+                            <p class="card-text" style="font-family: 'Roboto', sans-serif; font-size: 14px; margin-bottom: 4px; color: white;"><small>{{ profile.genre }}</small></p><hr>
+                            <p class="card-text" style="font-family: DM Sans, sans-serif; font-size: 18px; font-weight: 100; margin-bottom: 2px; color: white;">{{ profile.bio }}</p>
                         </div>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                                     <img src="{{ post.user.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle" width="30" height="30">
                                 </a>
                                 <h5 class="card-title ms-2 mb-0 rajdhani-semibold">
-                                    <a href="{% url 'profilepage' post.user.username %}" style="text-decoration: none; color: black">{{ post.user }}</a>
+                                    <a href="{% url 'profilepage' post.user.username %}" style="text-decoration: none; color: white;">{{ post.user }}</a>
                                 </h5>
                             </div>
                             <hr style="margin-top: 10px; margin-bottom: 5px;">
@@ -260,7 +260,7 @@
                             </a>
                             {% endif %}
                             <hr style="margin-top: 10px; margin-bottom: 5px;">
-                            <p class="card-text rajdhani-regular">{{ post.caption }}</p>
+                            <p class="card-text rajdhani-regular" style="font-family: DM Sans, sans-serif; font-weight: 100;">{{ post.caption }}</p>
                         </div>
                         <div class="card-footer">
                             <p class="card-text rajdhani-light postedAt">{{ post.created_at }}</p>

@@ -17,15 +17,15 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     favorites = models.ManyToManyField(Post, related_name='favorited_by', blank=True)
     genre = models.CharField(max_length=100, choices=[
-        ('rap', 'Rap'),
-        ('rnb', 'R&B'),
-        ('pop', 'Pop'),
-        ('house', 'House'),
-        ('edm', 'EDM'),
-        ('rock', 'Rock'),
-        ('jazz', 'Jazz'),
-        ('indie', 'Indie'),
-        ('other', 'Other'),
+        ('Rap', 'Rap'),
+        ('R&b', 'R&B'),
+        ('Pop', 'Pop'),
+        ('House', 'House'),
+        ('Edm', 'EDM'),
+        ('Rock', 'Rock'),
+        ('Jazz', 'Jazz'),
+        ('Indie', 'Indie'),
+        ('Other', 'Other'),
     ], default='Not Specified')
 
     def __str__(self):

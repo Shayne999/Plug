@@ -24,6 +24,7 @@ class ListThreads(View):
         }
         return render(request, 'inbox.html', context)
     
+    
 
 class CreateThread(View):
     def get(self, request, *args, **kwargs):

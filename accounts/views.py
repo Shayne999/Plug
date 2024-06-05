@@ -104,6 +104,7 @@ def settings(request):
             location = request.POST['location']
             username = request.POST['username']
             email = request.POST['email']
+            genre = request.POST['genre']
 
             if 'profileimg' in request.FILES:
                 profileimg = request.FILES['profileimg']
@@ -115,6 +116,7 @@ def settings(request):
             user_profile.location = location
             user_profile.username = username
             user_profile.email = email
+            user_profile.genre = genre
             user_profile.save()
 
             return redirect('settings')

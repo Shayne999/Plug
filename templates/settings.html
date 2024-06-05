@@ -33,16 +33,16 @@
                     </div>
                     <div class="form-group">
                         <label for="genre">Primary Genre</label>
-                        <select class="form-control" name="genre" id="genre" required {{user_profile.genre}}>
-                            <option value="0">Rap</option>
-                            <option value="1">Rnb</option>
-                            <option value="2">Pop</option>
-                            <option value="0">House</option>
-                            <option value="1">EDM</option>
-                            <option value="2">Rock</option>
-                            <option value="0">Jazz</option>
-                            <option value="1">Indie</option>
-                            <option value="2">Other</option>
+                        <select class="form-control" name="genre" id="genre" required>
+                            <option value="rap" {% if user_profile.genre == 'rap' %}selected{% endif %}>Rap</option>
+                            <option value="rnb" {% if user_profile.genre == 'rnb' %}selected{% endif %}>R&B</option>
+                            <option value="pop" {% if user_profile.genre == 'pop' %}selected{% endif %}>Pop</option>
+                            <option value="house" {% if user_profile.genre == 'house' %}selected{% endif %}>House</option>
+                            <option value="edm" {% if user_profile.genre == 'edm' %}selected{% endif %}>EDM</option>
+                            <option value="rock" {% if user_profile.genre == 'rock' %}selected{% endif %}>Rock</option>
+                            <option value="jazz" {% if user_profile.genre == 'jazz' %}selected{% endif %}>Jazz</option>
+                            <option value="indie" {% if user_profile.genre == 'indie' %}selected{% endif %}>Indie</option>
+                            <option value="other" {% if user_profile.genre == 'other' %}selected{% endif %}>Other</option>
                         </select>
                     </div>
                     <br>

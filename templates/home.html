@@ -1,32 +1,39 @@
-
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1 class="pacifico-regular-allPage">C o n n e c t</h1><br>
-    
-    <div class="container">
-        <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
-            {% for users in users reversed %}
-                <div class="col-md-5">
-                    <div class="card" style="height: 550px; background-color: #343a40; color: white;">
-                        <a href="{{ users.profileimg.url }}" style="text-decoration: none; color: inherit;">
-                            <img src="{{ users.profileimg.url }}" class="card-img-top" alt="User Image" style="object-fit: cover; height: 350px; object-position: 50% 5%;">
+<h1 class="pacifico-regular-allPage">C o n n e c t</h1><br>
+
+<div class="container"">
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+        {% for users in users reversed %}
+            <div class="col-md-4">
+                <div class="card" style="height: 550px; background-color: #343a40; color: white; position: relative;">
+                    <a href="{{ users.profileimg.url }}" style="text-decoration: none; color: inherit;">
+                        <img src="{{ users.profileimg.url }}" class="card-img-top" alt="User Image" style="object-fit: cover; height: 350px; object-position: 50% 5%;">
+                    </a>
+                    <div class="card-body">
+                        <a href="{% url 'profilepage' users.username %}" style="text-decoration: none; color: white;">
+                            <h5 class="card-title rajdhani-semibold">{{ users.username }}</h5>
                         </a>
-                        <div class="card-body">
-                            <a href="{% url 'profilepage' users.username %}" style="text-decoration: none; color: white;">
-                                <h5 class="card-title rajdhani-semibold">{{ users.username }}</h5>
+                        <p class="card-text" style="font-family: 'Roboto', sans-serif; font-size: 14px; margin-bottom: 2px; color: white;"><small>{{ users.location }}</small></p>
+                        <p class="card-text" style="font-family: 'Roboto', sans-serif; font-size: 14px; margin-bottom: 4px; color: white;"><small>{{ users.genre }}</small></p>
+                        <hr style="margin-top: 10px; margin-bottom: 10px;"> <!-- Adjust margin-top and margin-bottom as needed -->
+                        <p class="card-text" style="font-family: DM Sans, sans-serif; font-size: 18px; font-weight: 100; margin-bottom: 2px; color: white;">{{ users.bio }}</p>
+                        <div class="text-center" style="position: absolute; bottom: 10px; left: 88%; margin-bottom: 140px;"> <!-- Adjust bottom as needed -->
+                            <a href="{% url 'create-thread' %}?username={{ users.username }}" style="color: white; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                                </svg>
                             </a>
-                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;"><small>{{ users.location }}</small></p>
-                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;"><small>{{ users.genre }}</small></p>
-                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;">{{ users.bio }}</p>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
-    
-    
-    
+</div>
 
 {% endblock %}
+
+
+
