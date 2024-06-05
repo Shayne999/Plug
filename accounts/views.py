@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from feed.models import Post
 
 # Create your views here.
 def index(request):
@@ -21,7 +22,9 @@ def index(request):
            return redirect('index')
 
     else:
-        return render(request, 'index.html')
+        latest_posts = Post.objects.all().order_by('-created_at')[:3]  # Get the latest 5 posts
+        latest_profiles = Profile.objects.select_related('user').order_by('-user__date_joined')[:3]  # Get the latest 3 users
+        return render(request, 'index.html', {'latest_posts': latest_posts, 'latest_profiles': latest_profiles})
     return render(request, 'index.html')
 
 # def login(request):
@@ -124,3 +127,12 @@ def chat(request):
 @login_required(login_url='index')
 def connections(request):
     return render(request, 'connections.html')
+
+@login_required
+def delete_profile_view(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Your profile has been deleted successfully.')
+        return redirect('index')
+    return render(request, 'settings.html')

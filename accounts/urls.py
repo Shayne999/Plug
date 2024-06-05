@@ -9,4 +9,5 @@ urlpatterns = [
     path('settings/', views.settings, name="settings"),
     path('chat/', views.chat, name="chat"),
     path('connections/', views.connections, name="connections"),
+    path('settings/delete/', views.delete_profile_view, name='delete_profile'),
 ]

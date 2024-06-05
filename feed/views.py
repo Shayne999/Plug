@@ -13,7 +13,7 @@ import uuid
 # Create your views here.
 
 
-@login_required(login_url='index')
+
 def feed_view(request):
     posts = Post.objects.all()
     return render(request, 'feed.html', {'posts': posts})

@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 
-    <!-- GOOGLE FONTS -->
+    GOOGLE FONTS
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Six+Caps&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
                 {% csrf_token %}
 
 
-                <!-- Error Messages -->
+                Error Messages
                 {% if messages %}
                     {% for message in messages %}
                         <div class="alert alert-danger" style="padding: 5px 10px; margin-bottom: 2px; font-size: 10px;">
@@ -39,7 +39,7 @@
                     {% endfor %}
                 {% endif %}
 
-                <!-- Username and Password -->
+                Username and Password
                 <div class="mb-3">
                     <div>
                         <label class="form-label signInText" for="username">Username</label>
@@ -66,9 +66,229 @@
 
 
 
-    <!-- boostarap javascript -->
+    boostarap javascript
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html> -->
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="This is Plug's Landing page">
+    <title>Plug</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Six+Caps&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sign_up' %}">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+
+    <header class="text-white text-center py-5">
+        <h1 class="pacifico-regular">Plug</h1><br><br>
+        <p style="font-family: DM Sans, sans-serif; font-weight: 100; font-size: 20px;">For Musicians By Musicians</p>
+    </header>
+
+    <!-- Features Section -->
+
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h3 style="font-family: Source Code Pro, monospace; font-weight: 200; font-size: 40px;">Connect</h3>
+                    <p style="font-family: DM Sans, sans-serif; font-weight: 100; font-size: 20px;">Explore and connect with musicians around the world. </p>
+                </div>
+                <div class="col-md-4">
+                    <h3 style="font-family: Source Code Pro, monospace; font-weight: 200; font-size: 40px;">Post</h3>
+                    <p style="font-family: DM Sans, sans-serif; font-weight: 100; font-size: 20px;">Share what you're working on.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 style="font-family: Source Code Pro, monospace; font-weight: 200; font-size: 40px;">Chat</h3>
+                    <p style="font-family: DM Sans, sans-serif; font-weight: 100; font-size: 20px;">Chat and colloborate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+
+    <section id="login" class="py-5">
+        <div class="container">
+            <h2 class="text-center signInText">Sign In</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+
+                        <!-- Error Messages -->
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-danger" style="padding: 5px 10px; margin-bottom: 2px; font-size: 10px;">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <!-- Username and Password -->
+
+                        <div class="mb-3">
+                            <label class="form-label signInText" for="username">Username</label>
+                            <input type="text" id="username" class="form-control" required name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label signInText" for="password">Password</label>
+                            <input type="password" id="password" class="form-control" minlength="8" maxlength="20" required name="password">
+                            <div class="form-text">
+                                Your password must be 8-20 characters long and only contain letters. It must not contain numbers, spaces, special characters, or emoji.
+                            </div>
+                        </div>
+                        <div class="mb-2 d-flex justify-content-between align-items-center mb-2">
+                            <a href="{% url 'sign_up' %}" class="signup-link signInText" aria-label="Sign Up">New here? Sign Up</a>
+                            <input type="submit" id="submitButton" class="btn btn-primary" name="signIn" value="Sign In" aria-label="Sign In">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <hr>
+
+
+    <!-- Latest Users Section -->
+    <h2 class="text-center mb-3">Latest Users</h2>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+            {% for profile in latest_profiles %}
+                <div class="col">
+                    <div class="card h-100" style="height: 550px; background-color: #343a40; color: white;">
+                        <a href="{{ profile.profileimg.url }}" style="text-decoration: none; color: inherit;">
+                            <img src="{{ profile.profileimg.url }}" class="card-img-top" alt="User Image" style="object-fit: cover; height: 350px; object-position: 50% 5%;">
+                        </a>
+                        <div class="card-body">
+                            <a href="{% url 'profilepage' profile.user.username %}" style="text-decoration: none; color: white;">
+                                <h5 class="card-title rajdhani-semibold">{{ profile.user.username }}</h5>
+                            </a>
+                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;"><small>{{ profile.location }}</small></p>
+                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;"><small>{{ profile.genre }}</small></p>
+                            <p class="card-text" style="font-family: 'Roboto', sans-serif; margin-bottom: 5px; color: white;">{{ profile.bio }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <hr>
+
+    <!-- Latest Posts Section -->
+    <section class="feed-preview">
+        <h2 class=" text-center mb-3">Latest Posts</h2>
+        <div class="container">
+            <div class="row">
+                {% for post in latest_posts %}
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: #343a40; color: white;">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <a href="{% url 'profilepage' post.user.username %}">
+                                    <img src="{{ post.user.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle" width="30" height="30">
+                                </a>
+                                <h5 class="card-title ms-2 mb-0 rajdhani-semibold">
+                                    <a href="{% url 'profilepage' post.user.username %}" style="text-decoration: none; color: black">{{ post.user }}</a>
+                                </h5>
+                            </div>
+                            <hr style="margin-top: 10px; margin-bottom: 5px;">
+                            {% if post.image %}
+                            <a href="{{ post.image.url }}">
+                                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.caption }}">
+                            </a>
+                            {% endif %}
+                            {% if post.video %}
+                            <a href="{{ post.video.url }}">
+                                <video controls class="card-img-top">
+                                    <source src="{{ post.video.url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </a>
+                            {% endif %}
+                            <hr style="margin-top: 10px; margin-bottom: 5px;">
+                            <p class="card-text rajdhani-regular">{{ post.caption }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text rajdhani-light postedAt">{{ post.created_at }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Plug. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+

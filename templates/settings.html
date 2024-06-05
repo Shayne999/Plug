@@ -52,6 +52,15 @@
                 </form>
             </div>
         </div>
+
+        <!-- Add delete profile button -->
+        <form method="POST" action="{% url 'delete_profile' %}" class="mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete your profile? This action cannot be undone.');">
+                Delete Profile
+            </button>
+        </form>
+
     </div>
 
 {% endblock %}
