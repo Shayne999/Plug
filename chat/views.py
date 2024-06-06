@@ -28,35 +28,54 @@ class ListThreads(View):
 
 class CreateThread(View):
     def get(self, request, *args, **kwargs):
-         form = ThreadForm()
-         context = {
-             'form': form
-         }
-         return render(request, 'create_thread.html', context)
+        username = request.GET.get('username')
+        if username:
+            try:
+                receiver = User.objects.get(username=username)
+                # Checking if athread between users already exists
+                thread = ThreadModel.objects.filter(
+                    Q(user=request.user, receiver=receiver) |
+                    Q(user=receiver, receiver=request.user)
+                ).first()
+                if thread:
+                    return redirect('thread', pk=thread.pk)
+                else:
+                    # Creates a new thread
+                    thread = ThreadModel(user=request.user, receiver=receiver)
+                    thread.save()
+                    return redirect('thread', pk=thread.pk)
+            except User.DoesNotExist:
+                messages.error(request, 'User does not exist.')
+                return redirect('create-thread')
+
+        form = ThreadForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'create_thread.html', context)
 
     def post(self, request, *args, **kwargs):
-          form = ThreadForm(request.POST)
-          username = request.POST.get('username')
+        form = ThreadForm(request.POST)
+        username = request.POST.get('username')
 
-          try: 
-              receiver = User.objects.get(username=username)
+        try: 
+            receiver = User.objects.get(username=username)
+            # Checking if athread between users already exists
+            thread = ThreadModel.objects.filter(
+                Q(user=request.user, receiver=receiver) |
+                Q(user=receiver, receiver=request.user)
+            ).first()
+            if thread:
+                return redirect('thread', pk=thread.pk)
+            else:
+                if form.is_valid():
+                    thread = ThreadModel(user=request.user, receiver=receiver)
+                    thread.save()
+                    return redirect('thread', pk=thread.pk)
+        except User.DoesNotExist:
+            messages.error(request, 'User does not exist.')
+            return redirect('create-thread')
 
-              if ThreadModel.objects.filter(user=request.user, receiver=receiver).exists():
-                  thread = ThreadModel.objects.filter(user=request.user, receiver=receiver)[0]
-                  return redirect('thread', pk=thread.pk)
-              elif ThreadModel.objects.filter(user=receiver, receiver=request.user).exists():
-                  thread = ThreadModel.objects.filter(user=receiver, receiver=request.user)[0]
-                  return redirect('thread', pk=thread.pk)
-              
-              if form.is_valid():
-                  thread = ThreadModel(user=request.user, receiver=receiver)
-                  thread.save()
-
-                  return redirect('thread', pk=thread.pk)
-              
-          except:
-              messages.error(request, 'User Does Not Exist')
-              return redirect('create-thread')
           
 
 class ThreadView(View):

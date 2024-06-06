@@ -46,7 +46,7 @@
                         <a href="{% url 'profilepage' post.user.username %}">
                             <img src="{{ post.user.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle" width="30" height="30">
                         </a>
-                        <h5 class="card-title ms-2 mb-0 rajdhani-semibold"><a href="{% url 'profilepage' post.user.username %}" style="text-decoration: none; color: black">{{ post.user }}</a></h5>
+                        <h5 class="card-title ms-2 mb-0 rajdhani-semibold"><a href="{% url 'profilepage' post.user.username %}" style="text-decoration: none; color: white;">{{ post.user }}</a></h5>
                     </div>
                     <hr style="margin-top: 10px; margin-bottom: 5px;">
 
@@ -71,7 +71,7 @@
                     <!--Post Caption-->
 
                     <hr style="margin-top: 10px; margin-bottom: 5px;">
-                    <p class="card-text rajdhani-regular">{{ post.caption }}</p>
+                    <p class="card-text rajdhani-regular" style="font-family: DM Sans, sans-serif; font-weight: 100;">{{ post.caption }}</p>
                 </div>
 
 
