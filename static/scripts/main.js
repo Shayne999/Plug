@@ -25,17 +25,32 @@ document.addEventListener('DOMContentLoaded', (event) => {
 NOTIFICATIONS                                                         */
 
 function showNotifications() {
-    const container = document.getElementById('notification-container');
-    
+    var container = document.getElementById('notification-container');
     if (container.classList.contains('d-none')) {
         container.classList.remove('d-none');
     } else {
         container.classList.add('d-none');
     }
-
 }
 
-
+function removeNotification(url, redirectUrl) {
+    fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken')
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Optionally refresh the notifications
+            window.location.href = redirectUrl;
+            console.log
+        } else {
+            console.error('Failed to delete notification');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 function getCookie(name) {
     let cookieValue = null;
@@ -43,7 +58,6 @@ function getCookie(name) {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -54,24 +68,7 @@ function getCookie(name) {
 }
 
 
-function removeNotification(removeNotificationURL, redirectURL) {
 
-    const csrftoken = getCookie('csrftoken');
-    let xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readystate === XMLHttpRequest.DONE) {
-            if (xmlhttp.status === 200) {
-                window.location.replace = redirectURL;
-            } else {
-                alert('There was an error removing the notification.');
-            }
-        }
-    };
-    xmlhttp.open("DELETE", removeNotificationURL, true);
-    xmlhttp.setRequestHeader("X-CSRFToken", csrftoken);
-    xmlhttp.send();
-}
 
 
 

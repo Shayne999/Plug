@@ -90,7 +90,7 @@ def profile(request):
 
 @login_required(login_url='index')
 def home(request):
-    users = Profile.objects.all()
+    users = Profile.objects.exclude(user=request.user)
     return render(request, 'home.html', {'users':users})
 
 
