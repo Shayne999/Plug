@@ -34,9 +34,13 @@ body {
     font-style: normal;
     text-align: center;
     color: white; 
+     
+}
+
+.textGlow {
     text-shadow: 0 0 var(--glow-size) #007bff, 0 0 calc(var(--glow-size) * 2) #007bff, 0 0 calc(var(--glow-size) * 4) #007bff, 0 0 calc(var(--glow-size) * 8) #007bff;
     --glow-size: 20px; 
-    --glow-intensity: 700%; 
+    --glow-intensity: 700%;
 }
 
 
