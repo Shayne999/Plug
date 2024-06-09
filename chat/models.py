@@ -6,6 +6,7 @@ from django.utils import timezone
 
 #conversation thread model
 class ThreadModel(models.Model):
+    #conversation thread model
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="+")
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="+")
 
@@ -15,8 +16,8 @@ class ThreadModel(models.Model):
 
 
 
-#message model
 class MessageModel(models.Model):
+    #conversation thread model
     thread = models.ForeignKey(ThreadModel, related_name='+', on_delete=models.CASCADE, blank=True, null=True)
     sender_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="+")
     receiver_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="+")
@@ -26,6 +27,7 @@ class MessageModel(models.Model):
     
 
 class Notification(models.Model):
+    #message notification model
     to_user = models.ForeignKey(User, related_name='notification_to', on_delete=models.CASCADE, null=True)
     from_user = models.ForeignKey(User, related_name='notification_from', on_delete=models.CASCADE, null=True)
     thread = models.ForeignKey('ThreadModel', on_delete=models.CASCADE, related_name='+', blank=True, null=True)

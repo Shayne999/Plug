@@ -4,69 +4,6 @@
 {% block content %}   
 
 
-<!-- <div calss="chat container" style="display: flex; flex-direction: column; height: 90vh;">
-        <div class="row justify-content-center">
-            <div class="card col-md-10 mt-10 p-3 shadow-sm d-flex align-items-center" style="background-color: #343a40;">
-                <a href="{{ thread.receiver.profile.profileimg.url }}">
-                    <img src="{{ thread.receiver.profile.profileimg.url }}" alt="Profile Image" class="img-fluid rounded-circle mr-3" width="60" height="60">
-                </a>
-                {% if thread.receiver == request.user %}
-                    <h5>{{ thread.user }}</h5>
-                {% else %}
-                    <a href="{% url 'profilepage' thread.receiver.username %}" style="text-decoration: none; color: white;">
-                        <h5>{{ thread.receiver }}</h5>
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-
-        {% if message_list.all.count == 0 %}
-        <div class="row my-5 justify-content-center">
-            <div class="col-md-12">
-                <p>No Messages</p>
-            </div>
-        </div>
-        {% endif %}
-
-
-        {% for message in message_list %}
-        <div class="row justify-content-center">
-            <div class="col-md-10 my-1">
-                {% if message.sender_user == request.user %}
-                    <div class="sent-message my-1" style="float: right;  width: 45%; word-wrap: break-word;">
-                        <p>{{ message.body }}</p>
-                    </div>
-                {% elif message.receiver_user == request.user %}
-                    <div class="received-message my-1" style="float: left; width: 45%; word-wrap: break-word;">
-                        <p>{{ message.body }}</p>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-        {% endfor %}
-
-
-        text and send
-
-
-        <div class="row justify-content-center">
-            <div class="card col-md-10 p-3 shadow-sm" style="background-color: #343a40;">
-                <form method="POST" action="{% url 'create-message' thread.pk %}" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-
-                    <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="submit" >Send</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-</div> -->
-
-
-
-
 
 <div class="chat-container" style="display: flex; flex-direction: column; height: 90vh;">
     <div class="chat-header" style="background-color: #343a40; color: white; padding: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">

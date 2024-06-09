@@ -7,6 +7,7 @@ from feed.models import Post
 
 # Create your views here.
 def index(request):
+    #returns the index page with the latest posts and users
     
     if request.method == 'POST':
         username = request.POST['username']
@@ -45,6 +46,7 @@ def index(request):
         return render(request, 'index.html')
     
 def sign_up(request):
+    #returns the sign up page and uploads new user data on the database
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
@@ -81,6 +83,7 @@ def sign_up(request):
 
 
 def logout(request):
+    #logs out the user and takes them to the login page(index page)
     auth.logout(request)
     return redirect('/')
 
@@ -90,6 +93,7 @@ def profile(request):
 
 @login_required(login_url='index')
 def home(request):
+    #returns the home page with all the available users excluding the currently logged in user
     users = Profile.objects.exclude(user=request.user)
     return render(request, 'home.html', {'users':users})
 
@@ -97,6 +101,7 @@ def home(request):
 
 @login_required(login_url='index')
 def settings(request):
+    #returns the settings page with the user profile data and allows the user to edit the data
     user_profile = Profile.objects.get(user=request.user)
 
     if request.method == 'POST':
@@ -122,16 +127,10 @@ def settings(request):
             return redirect('settings')
     return render(request, 'settings.html', {'user_profile':user_profile})
 
-@login_required(login_url='index')
-def chat(request):
-    return render(request, 'chat.html')
-
-@login_required(login_url='index')
-def connections(request):
-    return render(request, 'connections.html')
 
 @login_required
 def delete_profile_view(request):
+    #deletes the user profile
     if request.method == 'POST':
         user = request.user
         user.delete()

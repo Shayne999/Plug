@@ -20,6 +20,7 @@ def feed_view(request):
 
 @login_required(login_url='index')
 def upload(request):
+    #this is the post upload function
     if request.method == 'POST':
         user = request.user
         image = request.FILES.get('image')
@@ -37,10 +38,10 @@ def upload(request):
     else:
         messages.info(request, 'Upload Failed')
         return redirect('feed')
-    #return render(request, 'feed.html')
 
 @login_required(login_url='index')
 def like_post(request, post_id):
+    #this is the like post function
     post = get_object_or_404(Post, id=post_id)
     if request.user in post.likes.all():
         post.likes.remove(request.user)
@@ -51,10 +52,12 @@ def like_post(request, post_id):
 
 @login_required(login_url='index')
 def favorite_posts(request):
+    #returns a list of favorite posts
     user_favorites = Favorite.objects.filter(user=request.user)
     return render(request, 'favorite_posts.html', {'favorites': user_favorites})
 
 def add_to_favorites(request, post_id):
+    #this is the add to favorites function
     post = get_object_or_404(Post, id=post_id)
     profile = request.user.profile
     profile.favorites.add(post)
@@ -62,6 +65,7 @@ def add_to_favorites(request, post_id):
     
 @login_required(login_url='index')
 def favorites_view(request):
+    #returns a list of favorite posts
     profile = request.user.profile
     favorites = profile.favorites.all()
     return render(request, 'favorites.html', {'favorites': favorites})
@@ -69,6 +73,7 @@ def favorites_view(request):
 
 @login_required(login_url='index')
 def remove_from_favorites(request, post_id):
+    #this is the remove from favorites function
     post = get_object_or_404(Post, id=post_id)
     profile = request.user.profile
     profile.favorites.remove(post)
@@ -77,6 +82,7 @@ def remove_from_favorites(request, post_id):
 
 @login_required(login_url='index')
 def upload_page(request):
+    #this function returns the upload page
     return render(request, 'upload.html')
 
 

@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 User = get_user_model()
 
 class Post(models.Model):
+    #this is the post model
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='post_images')
@@ -21,6 +22,7 @@ class Post(models.Model):
         return f"{self.user.username}'s Post"
     
 class LikePost(models.Model):
+    #this is the post like model
     post_id = UUIDField()
     username = models.CharField(max_length=400)
 
@@ -28,6 +30,7 @@ class LikePost(models.Model):
         return self.username
     
 class Favorite(models.Model):
+    #this is the post favorite model
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 

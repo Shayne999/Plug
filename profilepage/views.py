@@ -6,6 +6,7 @@ from feed.models import Post
 
 @login_required(login_url='index')
 def profilepage(request, username):
+    #returns the profile page with the user profile data
     user_object = get_object_or_404(User, username=username)
     user_profile = get_object_or_404(Profile, user=user_object)
     user_posts = Post.objects.filter(user=user_object)

@@ -128,6 +128,7 @@ class ThreadNotification(View):
 
 
 class RemoveNotification(View):
+    #Removes message notification
     def delete(self, request, notification_pk, *args, **kwargs):
         notification = Notification.objects.get(pk=notification_pk)
 
@@ -138,6 +139,7 @@ class RemoveNotification(View):
     
 
 class DeleteThread(DeleteView):
+    #Deletes message thread
     model = ThreadModel
     template_name = 'threadmodel_confirm_delete.html'
     success_url = reverse_lazy('inbox')

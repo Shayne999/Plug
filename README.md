@@ -1,12 +1,14 @@
 Plug
 
-What is Plug?
-Plug is a a platform meant to connect musicians. Social media platforms gave become popularity contests making it hard for musicians to connect if they are not on the same level in terms of followers. Plug will make finding musicians to colloborate with easy.
+Built by Shayne Ndlovu, Plug is a portfolio project for Holberton School. It aims to make it easier for musicians to find each other and collaborate. It is a social media for musicians that removes the popularity contest aspect of social media. The focus was building a user friendly platform that focuses on connecting and collaboration and not directly growing one's audience.
 
-How Does It Work?
-Plug will not a follow or following feature. Once a user logs in they will see a list of musicians on the platform. They will be albe to read their bios and navigato to their profiles and send a message shoould they be interested in collaborating.
-There is also a feed page when you can see what other musicians have posted on the platform, like and save your favourite posts. Users will be able to navigate to a musicians profile from the feed page and sed them a message.
-Where other platforms have created unnecssary steps to connect with other musicians Plug has made it simple and straightt forward with no hurdles. The reason for this is simple, if you are not looking to find and cpotentially colllaborate with new musicians, you have no business being on the platform so there is no need to be unreachable on such a platform.
+Being a musician myself i often find myself unable to connect with some musicians if their follow count is higher. Sometimes said musicians could be willing to collaborate but due to how their social media accounts are set up they might not even see messages from accounts they are not following. 
+Should they change their account settings they would start receiving messaged from all kinds of accounts. On both sides musicians are stuck having to find creative and often tedious solutions to this problem.
+
+Plug aims to solve this problem. A platform strictly for musicians where users can create profile, add a profile image, add a bio, their location, specify their primary genre, post images and videos and send messages to other users. Other user can only like and add posts to their favorites. With no way to follow other users on the platform, this allows users to focus on finding musicians to collaborate with without worrying about account sizes. This was platform was built by a musician for musicians.
+
+#this is the testing version with local database and storage and is run on my local server for testing. The deployed project with cloud storage and database is availabale on the link below. 
 
 Author: Shayne Ndlovu<shaynejuniorn@gmail.com>
 Github: <https://github.com/Shayne999>
+Deployed project: https://plug-deploy2.ue.r.appspot.com/
