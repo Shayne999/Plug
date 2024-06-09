@@ -1,6 +1,6 @@
 Plug
 
-![Screenshot (23)](https://github.com/Shayne999/Plug/assets/136084881/1a9d168b-592f-42cf-9d62-c110cfda2c24)
+![Screenshot (23)cropped](https://github.com/Shayne999/Plug/assets/136084881/ccf65a1b-62b9-46b5-9f27-c831495f8846)
 
 
 Built by Shayne Ndlovu, Plug is a portfolio project for Holberton School. It aims to make it easier for musicians to find each other and collaborate. It is a social media for musicians that removes the popularity contest aspect of social media. The focus was building a user friendly platform that focuses on connecting and collaboration and not directly growing one's audience.
