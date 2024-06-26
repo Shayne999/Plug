@@ -8,4 +8,9 @@ handlers:
 - url: /.*
   script: auto
 
+env_variables:
+  GS_BUCKET_NAME: "plug-deploy2.appspot.com"
+  GOOGLE_APPLICATION_CREDENTIALS: "plug-deploy2-cloud-storge-keys.json"
+
+
 

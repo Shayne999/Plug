@@ -13,9 +13,21 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from django.core.wsgi import get_wsgi_application
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Google Cloud Storage settings
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'plug-deploy2.appspot.com'
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    BASE_DIR / 'plug-deploy2-cloud-storge-keys.json'
+)
+
+# Media files settings
+MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +39,12 @@ SECRET_KEY = 'django-insecure-porii=kscnb05iui@4xf#g#p_*!3scphbq7&0b+j$fb9c(t323
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        'plug-deploy2.ue.r.appspot.com',
+        '127.0.0.1',
+]
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000']
 
 
 # Application definition
@@ -87,10 +104,10 @@ WSGI_APPLICATION = 'Plug.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Plug_Database',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'Iamjmagnus!',
-        'HOST': 'localhost',
+        'HOST': '34.139.194.242',
         'PORT': '5432',
     }
 }
@@ -139,5 +156,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
