@@ -34,7 +34,7 @@ MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-porii=kscnb05iui@4xf#g#p_*!3scphbq7&0b+j$fb9c(t323'
+SECRET_KEY = ****
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -103,12 +103,12 @@ WSGI_APPLICATION = 'Plug.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'Iamjmagnus!',
-        'HOST': '34.139.194.242',
-        'PORT': '5432',
+        'ENGINE': '****',
+        'NAME': '****',
+        'USER': '****',
+        'PASSWORD': '****',
+        'HOST': '****',
+        'PORT': '****',
     }
 }
 
