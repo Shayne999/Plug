@@ -1,17 +1,55 @@
-Plug
+# Plug
 
+**Built by Shayne Ndlovu**
+
+Plug is a portfolio project developed for Holberton School, designed as a social media platform exclusively for musicians. Its mission is to facilitate genuine connections and collaborations among musicians, eliminating the "popularity contest" aspect often seen on mainstream social media. Instead of focusing on follower counts, Plug emphasizes collaboration and interaction, making it easier for musicians to find each other without any barriers.
+
+---
+
+## Why Plug?
+
+As a musician, I’ve often struggled to connect with others in the music industry. If a musician has a large follower count, it can be challenging to reach out, as many may not even see messages from users they don’t follow. Adjusting social media settings isn’t always a solution, as it can lead to an influx of irrelevant messages. This discourages collaboration and can isolate musicians by follower count. Plug aims to solve this issue by removing the focus on audience growth and enabling musicians to connect on an equal playing field.
+
+## Features
+
+- **User Profiles**: Each user can create a profile, including:
+  - Profile image
+  - Bio
+  - Location
+  - Primary genre
+- **Media Sharing**: Users can post images and videos to showcase their work.
+- **Messaging**: Direct messaging allows musicians to communicate and plan collaborations.
+- **Engagement Without Following**: Users can like and favorite posts but **cannot follow other users**. This approach removes popularity metrics and promotes genuine connection.
+  
+Plug was built by a musician, for musicians.
+
+## Technologies
+
+This project was built using:
+
+- **Django**: For backend and web framework.
+- **PostgreSQL**: For database management.
+- **HTML, CSS, and Bootstrap**: For the frontend, creating a responsive and user-friendly design.
+
+## Status
+
+This is the testing version with local database and storage, running on a local server. A deployed version with cloud storage and database capabilities can be accessed at the link below.
+
+---
+
+### Getting Started
+
+1. Clone the repository.
+2. Run the setup scripts to configure the local environment.
+3. Use the deployment link for the live version.
+
+### Future Improvements
+
+- Enhanced media sharing options (e.g., audio-only posts)
+- Increased search/filter options by genre or location
+- Integration with cloud storage and databases
+
+---
+
+# Image(s)
 ![Screenshot (23)cropped](https://github.com/Shayne999/Plug/assets/136084881/ccf65a1b-62b9-46b5-9f27-c831495f8846)
-
-
-Built by Shayne Ndlovu, Plug is a portfolio project for Holberton School. It aims to make it easier for musicians to find each other and collaborate. It is a social media for musicians that removes the popularity contest aspect of social media. The focus was building a user friendly platform that focuses on connecting and collaboration and not directly growing one's audience.
-
-Being a musician myself i often find myself unable to connect with some musicians if their follow count is higher. Sometimes said musicians could be willing to collaborate but due to how their social media accounts are set up they might not even see messages from accounts they are not following. 
-Should they change their account settings they would start receiving messaged from all kinds of accounts. On both sides musicians are stuck having to find creative and often tedious solutions to this problem.
-
-Plug aims to solve this problem. A platform strictly for musicians where users can create profile, add a profile image, add a bio, their location, specify their primary genre, post images and videos and send messages to other users. Other user can only like and add posts to their favorites. With no way to follow other users on the platform, this allows users to focus on finding musicians to collaborate with without worrying about account sizes. This was platform was built by a musician for musicians.
-
-#this is the testing version with local database and storage and is run on my local server for testing. The deployed project with cloud storage and database is availabale on the link below. 
-
-Author: Shayne Ndlovu<shaynejuniorn@gmail.com>
-Github: <https://github.com/Shayne999>
-Deployed project: https://plug-deploy2.ue.r.appspot.com/
